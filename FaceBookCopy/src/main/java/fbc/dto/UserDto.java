@@ -31,6 +31,11 @@ public class UserDto {
 		this.userCreateDate = userCreateDate;
 		this.userModifyDate = userModifyDate;
 	}
+	
+	public UserDto(String userNickName) {
+		super();
+		this.userNickName = userNickName;
+	}
 
 	public int getUserNo() {
 		return userNo;

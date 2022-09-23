@@ -7,17 +7,18 @@ public class PostDto {
 	private int postNum = 0;
 	private int postNo = 0;
 	private String postTitle = "";
-	private String postContent = "";
+	private String postContent = "";	
 	private Date postCreateDate = null;
 	private Date postModifyDate = null;
 	private int count = 0;
+	private String userNickName = "";
 	
 	public PostDto() {
 		super();
 	}
 
 	public PostDto(int postNum, int postNo, String postTitle, String postContent, Date postCreateDate,
-			Date postModifyDate, int count) {
+			Date postModifyDate, int count, String userNickName) {
 		super();
 		this.postNum = postNum;
 		this.postNo = postNo;
@@ -26,6 +27,16 @@ public class PostDto {
 		this.postCreateDate = postCreateDate;
 		this.postModifyDate = postModifyDate;
 		this.count = count;
+		this.userNickName = userNickName;
+	}
+
+	public PostDto(int postNo, String postTitle, Date postCreateDate, int count, String userNickName) {
+		super();
+		this.postNo = postNo;
+		this.postTitle = postTitle;
+		this.postCreateDate = postCreateDate;
+		this.count = count;
+		this.userNickName = userNickName;
 	}
 
 	public int getPostNum() {
@@ -84,11 +95,19 @@ public class PostDto {
 		this.count = count;
 	}
 
+	public String getUserNickName() {
+		return userNickName;
+	}
+
+	public void setUserNickName(String userNickName) {
+		this.userNickName = userNickName;
+	}
+
 	@Override
 	public String toString() {
 		return "PostDto [postNum=" + postNum + ", postNo=" + postNo + ", postTitle=" + postTitle + ", postContent="
 				+ postContent + ", postCreateDate=" + postCreateDate + ", postModifyDate=" + postModifyDate + ", count="
-				+ count + "]";
+				+ count + ", userNickName=" + userNickName + "]";
 	}
 	
 }
