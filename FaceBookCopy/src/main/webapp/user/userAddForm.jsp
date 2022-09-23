@@ -99,19 +99,57 @@ a:hover {
 			<div class="_d4" id="_d4_2">가입정보입력
 <!-- 				<div>오류거르는div</div> -->
 				<form action="add" method="post">
-					<div>name
-						<div>lastname</div>
-						<div>firstname</div>
+					<div>fullName
+						<div>lastname
+							<div class="placeholder" aira-hidden="true">성(姓)</div>
+							<input type="text" name="lastname" class="inputText">
+						</div>
+						<div>firstname
+							<div class="placeholder" aira-hidden="true">이름(성은 제외)</div>
+							<input type="text" name="fistname" class="inputText">
+						</div>
 					</div>
-					<div>phone or email(ID)</div>
-					<div>password</div>
-					<div>birth</div>
+					<div>
+<!-- 						<div></div> -->
+						<div class="placeholder" aira-hidden="true">휴대폰 번호 또는 이메일</div>
+						<input type="text" name="userId" class="inputText">
+					</div>
+					<div>
+<!-- 	<div>placeholderInput/placeholderInputEmpty 인풋조건에따라 클래스를 바꿔주자</div> -->
+						<div class="placeholder" aira-hidden="true">새 비밀번호</div>
+						<input type="password" name="pwd" class="inputText">
+					</div>
+					<div>
+						<div>생일	</div>
+						<div>
+							<span data-type="selectors">
+								<span>
+									<select aria-label="연도" title="연도" name="birth_Y">
+<!-- 										<option value="2022~1900"> -->
+									</select>
+									<select aria-label="월" title="월" name="birth_M">
+										
+									</select>
+									<select aria-label="일" title="일" name="birth_D"></select>
+								</span>
+							</span>
+						</div>
+					</div>
 					<div>
 						<div>성별</div>
-						<span class="_d4_fo_sp" date-type="radio">
-						<label>여성</label><input type="radio" value="1">
-						<label>남성</label><input type="radio" value="2">
-						<label>개인지정</label><input type="radio" value="-1">
+						<span class="_d4_fo_sp" data-type="radio">
+						<span>
+						<label>여성</label>
+						<input type="radio" name="sex" value="0">
+						</span>
+						<span>
+						<label>남성</label>
+						<input type="radio" name="sex" value="1">
+						</span>
+						<span>
+						<label>개인지정</label>
+						<input type="radio" name="sex" value="-1">
+						</span>
 						</span>
 					</div>
 					<!-- 이구역은 ._58mv css만 건드리기 -->
