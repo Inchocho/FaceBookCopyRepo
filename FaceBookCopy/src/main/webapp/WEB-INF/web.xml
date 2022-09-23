@@ -15,7 +15,7 @@
   </context-param>
   <context-param>
   	<param-name>user</param-name>
-  	<param-value>face</param-value>
+  	<param-value>fb12</param-value>
   </context-param>
   <context-param>
   	<param-name>password</param-name>
