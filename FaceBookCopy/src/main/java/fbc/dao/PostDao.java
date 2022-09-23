@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-
 import fbc.dto.PostDto;
-import fbc.dto.UserDto;
 
 public class PostDao {
 	
@@ -89,5 +85,39 @@ public class PostDao {
 			}
 
 		}
+	}
+	
+	public int insertPost(int userNo, String title, String content) throws Exception {
+		int result = 0;
+		PreparedStatement pstmt = null;
+
+		try {
+			String sql = "";
+
+			sql += "INSERT INTO POST_LIST_TB"; 
+			sql += " VALUES(POST_INFO_TB_POST_NUM_SEQ.NEXTVAL, ?, ?, ?, SYSDATE, SYSDATE, 0)";
+
+			pstmt = connection.prepareStatement(sql);
+
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, title);		
+			pstmt.setString(3, content);
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		} // finally 종료
+
+		return result;
 	}
 }
