@@ -10,7 +10,7 @@ public class PostDto {
 	private String postContent = "";	
 	private Date postCreateDate = null;
 	private Date postModifyDate = null;
-	private int count = 0;
+	private int postCount = 0;
 	private String userNickName = "";
 	
 	public PostDto() {
@@ -18,7 +18,7 @@ public class PostDto {
 	}
 
 	public PostDto(int postNum, int postNo, String postTitle, String postContent, Date postCreateDate,
-			Date postModifyDate, int count, String userNickName) {
+			Date postModifyDate, int postCount, String userNickName) {
 		super();
 		this.postNum = postNum;
 		this.postNo = postNo;
@@ -26,16 +26,16 @@ public class PostDto {
 		this.postContent = postContent;
 		this.postCreateDate = postCreateDate;
 		this.postModifyDate = postModifyDate;
-		this.count = count;
+		this.postCount = postCount;
 		this.userNickName = userNickName;
 	}
 
-	public PostDto(int postNo, String postTitle, Date postCreateDate, int count, String userNickName) {
+	public PostDto(int postNo, String postTitle, Date postCreateDate, int postCount, String userNickName) {
 		super();
 		this.postNo = postNo;
 		this.postTitle = postTitle;
 		this.postCreateDate = postCreateDate;
-		this.count = count;
+		this.postCount = postCount;
 		this.userNickName = userNickName;
 	}
 
@@ -87,12 +87,12 @@ public class PostDto {
 		this.postModifyDate = postModifyDate;
 	}
 
-	public int getCount() {
-		return count;
+	public int getPostCount() {
+		return postCount;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
+	public void setPostCount(int postCount) {
+		this.postCount = postCount;
 	}
 
 	public String getUserNickName() {
@@ -106,8 +106,8 @@ public class PostDto {
 	@Override
 	public String toString() {
 		return "PostDto [postNum=" + postNum + ", postNo=" + postNo + ", postTitle=" + postTitle + ", postContent="
-				+ postContent + ", postCreateDate=" + postCreateDate + ", postModifyDate=" + postModifyDate + ", count="
-				+ count + ", userNickName=" + userNickName + "]";
+				+ postContent + ", postCreateDate=" + postCreateDate + ", postModifyDate=" + postModifyDate + ", postCount="
+				+ postCount + ", userNickName=" + userNickName + "]";
 	}
 	
 }

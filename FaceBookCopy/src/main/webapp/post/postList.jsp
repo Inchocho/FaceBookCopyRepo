@@ -19,14 +19,14 @@
 					<th>조회</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody>			
 				<c:forEach var="PostDto" items="${postList}">
 					<tr>				
-						<td>${PostDto.getPostNo()},</td>
-						<td>${PostDto.getPostTitle()}</td>							
-						<td>${PostDto.getUserNickName()}</td>							
-						<td>${PostDto.getPostCreateDate()}</td>
-						<td>${PostDto.getCount()}</td>
+						<td>${PostDto.postNo},</td>
+						<td>${PostDto.postTitle}</td>							
+						<td>${PostDto.userNickName}</td>							
+						<td>${PostDto.postCreateDate}</td>
+						<td>${PostDto.postCount}</td>
 					</tr>						
 				</c:forEach>				
 			</tbody>

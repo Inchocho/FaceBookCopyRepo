@@ -31,16 +31,19 @@ public class PostListServlet extends HttpServlet{
 			
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
+			System.out.println("postDao 서버 연결");
 			
 			ArrayList<PostDto> postList 
 				= (ArrayList<PostDto>)postDao.selectPostList();
 			
+			System.out.println("쿼리 실행 ----");
 			req.setAttribute("postList", postList);
 			
 			RequestDispatcher rd
 				= req.getRequestDispatcher("./postList.jsp");
 			
 			rd.forward(req, resp);
+			System.out.println("postList.jsp로 전달");
 			
 		} catch(Exception e) {
 			

@@ -30,34 +30,40 @@ public class PostDao {
 		try {
 			String sql = "";
 			
-			sql += "SELECT A.POST_NO, A.POST_TITLE, B.USER_NICKNAME, A.POST_CREATEDATE,";
-			sql += " A.POST_COUNT";
+			System.out.println("sql 실행전 ----");
+			sql += "SELECT A.POST_NO AS POST_NO, A.POST_TITLE AS POST_TITLE, B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE,";
+			sql += " A.POST_COUNT AS POST_COUNT";
 			sql += " FROM POST_INFO_TB A, USER_INFO_TB B";
 			sql += " WHERE A.POST_NO = B.USER_NO";
 			
 			pstmt = connection.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();
+			System.out.println("sql 실행후 ----");
 
 			ArrayList<PostDto> postList = new ArrayList<>();
 			
 			int postNo = 0;
 			String postTitle = "";
-			String userNickName = "";
 			Date postCreateDate = null;
 			int count = 0;
+			String userNickName = "";
+			
+			System.out.println("값이 담기기 전");
 			
 			while (rs.next()) {
-				postNo = rs.getInt("A.POST_NO");
-				postTitle = rs.getString("A.POST_TITLE");
-				postCreateDate = rs.getDate("A.POST_AUTHOR");
-				count = rs.getInt("A.POST_CRE_DATE");
-				userNickName = rs.getString("B.USER_NICKNAME");
+				System.out.println();
+				postNo = rs.getInt("POST_NO");
+				postTitle = rs.getString("POST_TITLE");
+				postCreateDate = rs.getDate("POST_CREATEDATE");
+				count = rs.getInt("POST_COUNT");
+				userNickName = rs.getString("USER_NICKNAME");
 				
 				PostDto postDto
 				= new PostDto(postNo, postTitle
 							, postCreateDate, count, userNickName);		
 				
+				System.out.println("값이 담긴 후 전달");
 				postList.add(postDto);
 			}
 
