@@ -3,6 +3,7 @@ package fbc.servlets;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,25 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fbc.dao.PostDao;
+import fbc.dto.PostDto;
 
-@WebServlet(value="/post/add")
-public class PostAddServlet extends HttpServlet{
-
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
-			throws ServletException, IOException {
+@WebServlet(value="/post/info")
+public class PostInfoServlet extends HttpServlet{
 	
-	}
-
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
+		
 		Connection conn = null;
 		
 		try {
-			int postNo = Integer.parseInt(req.getParameter("postNo"));		
-			String title = req.getParameter("title");
-			String content = req.getParameter("content");
+			int postNo = Integer.parseInt(req.getParameter("postNo"));
 			
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");
@@ -37,13 +32,25 @@ public class PostAddServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
-			postDao.insertPost(postNo, title, content);	
+			PostDto postDto = new PostDto();
+			postDto = postDao.selectPostInfo(postNo);
 			
-			resp.sendRedirect("./list");
+			req.setAttribute("postDto", postDto);
+			
+			RequestDispatcher rd
+				= req.getRequestDispatcher("./postInfo.jsp");
+			
+			rd.forward(req, res);
 			
 		} catch(Exception e) {
 			
-		}
+		}	
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+	
 	}
 	
 }

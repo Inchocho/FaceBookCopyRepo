@@ -87,7 +87,7 @@ public class PostDao {
 		}
 	}
 	
-	public int insertPost(int userNo, String title, String content) throws Exception {
+	public int insertPost(int postNo, String title, String content) throws Exception {
 		int result = 0;
 		PreparedStatement pstmt = null;
 
@@ -99,7 +99,7 @@ public class PostDao {
 
 			pstmt = connection.prepareStatement(sql);
 
-			pstmt.setInt(1, userNo);
+			pstmt.setInt(1, postNo);
 			pstmt.setString(2, title);		
 			pstmt.setString(3, content);
 
@@ -119,5 +119,100 @@ public class PostDao {
 		} // finally 종료
 
 		return result;
+	}
+	
+	public PostDto selectPostInfo(int postNo) throws Exception{
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		PostDto postDto = null;
+		
+		try {
+			String sql = "";
+			sql += "SELECT * FROM POST_INFO_TB";
+			sql += " WHERE POST_NO = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, postNo);
+			
+			rs = pstmt.executeQuery();
+			
+			String postTitle = "";
+			String content = "";
+			
+			while (rs.next()) {
+				System.out.println();
+				postTitle = rs.getString("POST_TITLE");
+				content = rs.getString("POST_CONTENT");
+				
+				postDto = new PostDto(postTitle, content);		
+				
+				System.out.println("값이 담긴 후 전달");
+				
+			}			
+			
+			return postDto;
+			
+		} catch (Exception e){
+			throw e;
+		}
+	}
+	
+	public PostDto selectOne(int postNo) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		PostDto postDto = null;
+		
+		try {
+			String sql = "";
+			sql += "SELECT * ";
+			sql += " FROM POST_INFO_TB";
+			sql += " WHERE POST_NO = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setInt(1, postNo);
+			
+			rs = pstmt.executeQuery();
+			
+			String postTitle = "";
+			String content = "";
+			
+			if(rs.next()) {
+				postTitle = rs.getString("POST_TITLE");
+				content = rs.getString("POST_CONTENT");
+				
+				postDto = new PostDto(postTitle, content);		
+				
+				System.out.println("값이 담긴 후 전달");
+			}
+		
+		} catch(Exception e) {
+			
+		}
+		
+		return postDto;
+	}
+	
+	public void updatePost(int postNo, String post_title, String post_content) throws Exception{
+		
+		PreparedStatement pstmt = null;		
+		
+		try {
+			String sql = "";
+			sql += "UPDATE POST_INFO_TB";
+			sql += " SET POST_TITLE = ?";
+			sql += " ,POST_CONTENT = ?";
+			sql += " WHERE POST_NO = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, post_title);
+			pstmt.setString(2, post_content);
+			pstmt.setInt(3, postNo);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e){
+			throw e;
+		}
 	}
 }

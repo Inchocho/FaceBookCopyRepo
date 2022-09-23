@@ -37,6 +37,12 @@ public class PostDto {
 		this.postCreateDate = postCreateDate;
 		this.postCount = postCount;
 		this.userNickName = userNickName;
+	}	
+
+	public PostDto(String postTitle, String postContent) {
+		super();
+		this.postTitle = postTitle;
+		this.postContent = postContent;
 	}
 
 	public int getPostNum() {
