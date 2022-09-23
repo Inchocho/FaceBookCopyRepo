@@ -10,7 +10,7 @@
 	<h1>안녕하세요 인덱스 페이지 입니다</h1>
 	<p>CREATE USER face IDENTIFIED BY 1234;
 	<p>GRANT CONNECT, RESOURCE TO face;
-	<p>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 토큰키값
+	<p>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 토큰키값
 </body>
 </html>
 
