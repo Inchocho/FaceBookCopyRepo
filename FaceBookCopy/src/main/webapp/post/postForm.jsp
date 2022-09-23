@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>안녕하세요 인덱스 페이지 입니다</h1>
-	<p>CREATE USER face IDENTIFIED BY 1234;
-	<p>GRANT CONNECT, RESOURCE TO face;
-	<p>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  토큰키값
+	<form action="">
+		
+	</form>
 </body>
 </html>
-
