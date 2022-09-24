@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet{
 			
 //			session.removeAttribute(name);
 
-			res.sendRedirect("../auth/authList.jsp");
+			res.sendRedirect("../post/postList.jsp");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

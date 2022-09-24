@@ -21,13 +21,22 @@ ul{
  	list-style:none;
 }
 
+#footerUl <li <a{
+ 	color: #8a8d91;
+ 	font-size: 12px;
+}
 
 #underPart{
  background-color: #fff;
 }
 
-ul <li <a{
- color: #737373;
+
+#firstLetter{
+	font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+    width: 500px; 
 }
 
 #loginMainBox{
@@ -95,7 +104,7 @@ ul <li <a{
 
 <div id="topPart"><!--1-1div시작 -->
 		<img src="../img/Facebook1.PNG" alt="">
-		<h2>Facebook에서 전세계에 있는 친구,가족,지인들과 함께 이야기를 나눠보세요</h2>
+		<h2 id="firstLetter">Facebook에서 전세계에 있는 친구,가족,지인들과 함께 이야기를 나눠보세요</h2>
 
 		<div id="loginMainBox"><!-- 로그인 모델 박스 시작 -->
 			<form id="loginMainBox" action="./login" method="post">
@@ -126,7 +135,7 @@ ul <li <a{
 		
 <footer>
 		<div id="underPart"><!--1-2div시작 -->
-		<ul>
+		<ul id="footerUl">
 		<li><a href="#">한국어</a></li>
 		<li><a href="#">English(US)</a></li>
 		<li><a href="#">Tiếng Việt</a></li>
