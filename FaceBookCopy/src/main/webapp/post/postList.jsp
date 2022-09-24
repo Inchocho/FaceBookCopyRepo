@@ -58,6 +58,9 @@ h2 {
 			</tr>	
         </tbody>        
       </table>
+      <c:if test="${startPage > pageCount}">
+      	<a href = "./list?pageNum=${startPage - pageBlock}"></a>
+      </c:if>      
 </div>
 
 </body>
