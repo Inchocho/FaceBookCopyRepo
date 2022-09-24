@@ -32,34 +32,6 @@ table.dataTable td {
 }
 </style>
 </head>
-<<<<<<< HEAD
-<body>	
-	<div>
-		<table>
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>제목</th>
-					<th>글쓴이</th>
-					<th>작성</th>
-					<th>조회</th>
-				</tr>
-			</thead>
-			<tbody>			
-				<c:forEach var="PostDto" items="${postList}">
-					<tr>				
-						<td>${PostDto.postNo},</td>
-						<td>${PostDto.postTitle}</td>							
-						<td>${PostDto.userNickName}</td>							
-						<td>${PostDto.postCreateDate}</td>
-						<td>${PostDto.postCount}</td>
-						
-					</tr>						
-				</c:forEach>				
-			</tbody>
-		</table>
-	</div>		
-=======
 <body>
 <h2>Responsive Table with DataTables</h2>
 
@@ -99,6 +71,5 @@ table.dataTable td {
 </div>
 
 <p class="p">Demo by George Martsoukos. <a href="http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions" target="_blank">See article</a>.</p>
->>>>>>> refs/remotes/origin/master
 </body>
 </html>

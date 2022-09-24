@@ -40,11 +40,15 @@ public class LoginDao {
 				rs = pstmt.executeQuery();
 				
 				if (rs.next()) {
+					int userNo = 0;
+					
+					userNo = rs.getInt("USER_NO");
 					email = rs.getString("USER_PHONE_EMAIL");
 					pwd = rs.getString("USER_PASSWORD");
 
 					UserDto userDto = new UserDto();
 
+					userDto.setUserNo(userNo);
 					userDto.setUserPhoneOrEmail(email);
 					userDto.setUserPassword(pwd);
 					

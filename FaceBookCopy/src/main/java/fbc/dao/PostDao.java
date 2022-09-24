@@ -27,10 +27,10 @@ public class PostDao {
 			String sql = "";
 			
 			System.out.println("sql 실행전 ----");
-			sql += "SELECT A.POST_NO AS POST_NO, A.POST_TITLE AS POST_TITLE, B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE,";
-			sql += " A.POST_COUNT AS POST_COUNT";
+			sql += "SELECT A.POST_NO AS POST_NO, A.POST_NUM AS POST_NUM, A.POST_TITLE AS POST_TITLE, B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE";
+			sql += " ,A.POST_COUNT AS POST_COUNT";
 			sql += " FROM POST_INFO_TB A, USER_INFO_TB B";
-			sql += " WHERE A.POST_NO = B.USER_NO";
+			sql += " WHERE A.POST_NO = B.USER_NO";  
 			
 			pstmt = connection.prepareStatement(sql);
 
@@ -39,6 +39,7 @@ public class PostDao {
 
 			ArrayList<PostDto> postList = new ArrayList<>();
 			
+			int postNum = 0;
 			int postNo = 0;
 			String postTitle = "";
 			Date postCreateDate = null;
@@ -49,6 +50,7 @@ public class PostDao {
 			
 			while (rs.next()) {
 				System.out.println();
+				postNum = rs.getInt("POST_NUM"); 
 				postNo = rs.getInt("POST_NO");
 				postTitle = rs.getString("POST_TITLE");
 				postCreateDate = rs.getDate("POST_CREATEDATE");
@@ -142,10 +144,13 @@ public class PostDao {
 			
 			while (rs.next()) {
 				System.out.println();
+				int postNum = 0;
+				postNo = rs.getInt("POST_NO");
+				postNum = rs.getInt("POST_NUM");
 				postTitle = rs.getString("POST_TITLE");
 				content = rs.getString("POST_CONTENT");
 				
-				postDto = new PostDto(postTitle, content);		
+				postDto = new PostDto(postTitle, content, postNo, postNum);		
 				
 				System.out.println("값이 담긴 후 전달");
 				
