@@ -25,19 +25,23 @@ public class PostListServlet extends HttpServlet{
 		Connection conn = null;
 		
 		try {
-			
+			int postCount = 0;
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");
 			
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
+			
+			postCount = postDao.countPost();
+			
 			System.out.println("postDao 서버 연결");
 			
 			ArrayList<PostDto> postList 
-				= (ArrayList<PostDto>)postDao.selectPostList();
+				= (ArrayList<PostDto>)postDao.selectPostList();								
 			
 			System.out.println("쿼리 실행 ----");
 			req.setAttribute("postList", postList);
+			req.setAttribute("totalPost", postCount);
 			
 			RequestDispatcher rd
 				= req.getRequestDispatcher("./postList.jsp");

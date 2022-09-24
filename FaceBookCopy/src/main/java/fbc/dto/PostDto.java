@@ -47,6 +47,11 @@ public class PostDto {
 		this.postNo = postNo;
 		this.postNum = postNum;
 	}
+	
+	public PostDto(int postNum) {
+		super();
+		this.postNum = postNum;
+	}
 
 	public int getPostNum() {
 		return postNum;

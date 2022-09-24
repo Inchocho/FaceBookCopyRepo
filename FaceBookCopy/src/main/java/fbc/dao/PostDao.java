@@ -27,8 +27,8 @@ public class PostDao {
 			String sql = "";
 			
 			System.out.println("sql 실행전 ----");
-			sql += "SELECT A.POST_NO AS POST_NO, A.POST_NUM AS POST_NUM, A.POST_TITLE AS POST_TITLE, B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE";
-			sql += " ,A.POST_COUNT AS POST_COUNT";
+			sql += "SELECT A.POST_NO AS POST_NO , A.POST_NUM AS POST_NUM , A.POST_TITLE AS POST_TITLE , B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE";
+			sql += ", A.POST_COUNT AS POST_COUNT";
 			sql += " FROM POST_INFO_TB A, USER_INFO_TB B";
 			sql += " WHERE A.POST_NO = B.USER_NO";  
 			
@@ -45,6 +45,7 @@ public class PostDao {
 			Date postCreateDate = null;
 			int count = 0;
 			String userNickName = "";
+			int totalPost = 0;
 			
 			System.out.println("값이 담기기 전");
 			
@@ -65,7 +66,7 @@ public class PostDao {
 				postList.add(postDto);
 			}
 
-			return postList;
+			return postList;					
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -224,4 +225,34 @@ public class PostDao {
 			throw e;
 		}
 	}
+	
+	public int countPost() throws Exception{
+		
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		int count = 0;
+		
+		try {
+			String sql = "";
+			sql += "SELECT MAX(POST_NUM) AS TOTAL_POST FROM POST_INFO_TB";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				count = rs.getInt(1);								
+			}
+			
+			return count;			
+			
+		
+		} catch(Exception e) {
+			throw e;
+		}
+		
+		
+	}
+
+	
 }

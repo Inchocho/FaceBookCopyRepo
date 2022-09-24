@@ -7,6 +7,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+table{
+	border: 1px black solid;
+	border-collapse:collapse;
+}
+
+
 body { 
   font-size: 140%; 
 }
@@ -16,60 +22,43 @@ h2 {
   padding: 20px 0;
 }
 
-table caption {
-  padding: .5em 0;
-}
 
-table.dataTable th,
-table.dataTable td {
-  white-space: nowrap;
-}
-
-.p {
-  text-align: center;
-  padding-top: 140px;
-  font-size: 14px;
-}
 </style>
 </head>
 <body>
 <h2>Responsive Table with DataTables</h2>
 
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <table summary="This table shows how to create responsive tables using Datatables' extended functionality" class="table table-bordered table-hover dt-responsive">
-        <caption class="text-center">An example of a responsive table based on <a href="https://datatables.net/extensions/responsive/" target="_blank">DataTables</a>:</caption>
-        <thead>
+	전체게시글 : ${totalPost}	
+		<a style="float:right;" href='../user/add'>회원가입</a>
+		<span style="float:right;">||</span> 
+		<a style="float:right;" href='../auth/login'>로그인</a>
+      <table style="width:100%">        
+        <thead style="background-color:skyblue; text-align:left;">
           <tr>
-            <th>Country</th>
-            <th>Languages</th>
-            <th>Population</th>
-            <th>Median Age</th>
-            <th>Area (Km²)</th>
+            <th style="width:10%">번호</th>
+            <th style="width:30%">제목</th>
+            <th style="width:20%">글쓴이</th>
+            <th style="width:20%">작성일</th>
+            <th style="width:10%">조회</th>
           </tr>
         </thead>
         <tbody>
 			<c:forEach var="PostDto" items="${postList}">
 				<tr>				
-					<td>${PostDto.postNum},</td>
+					<td>${PostDto.postNum}</td>
 					<td><a href='./info?postNo=${PostDto.postNo}'>${PostDto.postTitle}</a></td>							
 					<td>${PostDto.userNickName}</td>							
 					<td>${PostDto.postCreateDate}</td>
 					<td>${PostDto.postCount}</td>
 				</tr>						
-			</c:forEach>	
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5" class="text-center">Data retrieved from <a href="http://www.infoplease.com/ipa/A0855611.html" target="_blank">infoplease</a> and <a href="http://www.worldometers.info/world-population/population-by-country/" target="_blank">worldometers</a>.</td>
-          </tr>
-        </tfoot>
+			</c:forEach>
+			<tr>
+				
+			</tr>	
+        </tbody>        
       </table>
-    </div>
-  </div>
 </div>
 
-<p class="p">Demo by George Martsoukos. <a href="http://www.sitepoint.com/responsive-data-tables-comprehensive-list-solutions" target="_blank">See article</a>.</p>
 </body>
 </html>
