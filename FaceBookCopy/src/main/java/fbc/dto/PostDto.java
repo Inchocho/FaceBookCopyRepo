@@ -30,8 +30,9 @@ public class PostDto {
 		this.userNickName = userNickName;
 	}
 
-	public PostDto(int postNo, String postTitle, Date postCreateDate, int postCount, String userNickName) {
+	public PostDto(int postNum, int postNo, String postTitle, Date postCreateDate, int postCount, String userNickName) {
 		super();
+		this.postNum = postNum;
 		this.postNo = postNo;
 		this.postTitle = postTitle;
 		this.postCreateDate = postCreateDate;
@@ -39,10 +40,12 @@ public class PostDto {
 		this.userNickName = userNickName;
 	}	
 
-	public PostDto(String postTitle, String postContent) {
+	public PostDto(String postTitle, String postContent, int postNo, int postNum) {
 		super();
 		this.postTitle = postTitle;
 		this.postContent = postContent;
+		this.postNo = postNo;
+		this.postNum = postNum;
 	}
 
 	public int getPostNum() {

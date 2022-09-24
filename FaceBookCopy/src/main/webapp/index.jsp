@@ -5,22 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	function listFnc(){
-		var url = './post/list';
-		location.href = url; 
-	}
-	
-	function userAddFnc(){
-		var url = './post/list';
-		location.href = url; 
-	}
-	
-	function listFnc(){
-		var url = './post/list';
-		location.href = url; 
-	}	
-</script>
+
 </head>
 <body>
 	<jsp:include page="/header.jsp"/>

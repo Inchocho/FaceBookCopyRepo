@@ -40,13 +40,16 @@ public class LoginDao {
 				rs = pstmt.executeQuery();
 				
 				if (rs.next()) {
+					int userNo = 0;
 					email = rs.getString("USER_PHONE_EMAIL");
 					pwd = rs.getString("USER_PASSWORD");
+					userNo = rs.getInt("USER_NO");
 
 					UserDto userDto = new UserDto();
 
 					userDto.setUserPhoneOrEmail(email);
 					userDto.setUserPassword(pwd);
+					userDto.setUserNo(userNo);
 					
 					// 회원 정보 조회 데이터
 					return userDto;
