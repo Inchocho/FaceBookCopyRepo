@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>        
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,9 +25,11 @@
 		<input type='text' value='${postDto.postTitle}' name='title' readonly>
 		<input type='text' value='${sessionScope.userDto.userPhoneOrEmail}' readonly>
 		<input type='text' value='${postDto.postContent}' name='content' readonly>
-		<input type='password' value='${sessionScope.userDto.userPassword}' readonly>
-		<input type='submit' value='수정하기' onclick='pageMoveUpdateFnc()'>
+		<input type='password' value='${sessionScope.userDto.userPassword}' readonly>		
+		<c:if test = '${sessionScope.user.userNo eq postDto.postNum}'>
+		<input type='submit' id='submit' value='수정하기' onclick='pageMoveUpdateFnc()'>
+		</c:if>			
 		<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
-	</div>		
+	</div>
 </body>
 </html>

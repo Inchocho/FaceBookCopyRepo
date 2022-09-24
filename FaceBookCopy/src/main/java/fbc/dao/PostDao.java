@@ -56,7 +56,7 @@ public class PostDao {
 				userNickName = rs.getString("USER_NICKNAME");
 				
 				PostDto postDto
-				= new PostDto(postNo, postTitle
+				= new PostDto(postNum, postNo, postTitle
 							, postCreateDate, count, userNickName);		
 				
 				System.out.println("값이 담긴 후 전달");
@@ -175,13 +175,17 @@ public class PostDao {
 			rs = pstmt.executeQuery();
 			
 			String postTitle = "";
-			String content = "";
+			String content = "";			
+			int postNum = 0;
 			
 			if(rs.next()) {
 				postTitle = rs.getString("POST_TITLE");
 				content = rs.getString("POST_CONTENT");
+				postNo = rs.getInt("POST_NO");
+				postNum = rs.getInt("POST_NUM");
 				
-				postDto = new PostDto(postTitle, content);		
+				
+				postDto = new PostDto(postTitle, content, postNo, postNum);			
 				
 				System.out.println("값이 담긴 후 전달");
 			}
