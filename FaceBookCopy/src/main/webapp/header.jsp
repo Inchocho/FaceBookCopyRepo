@@ -62,8 +62,9 @@
 		</ul>
 	</nav>
 	
-	<p>${sessionScope.user.userPhoneOrEmail}
-	<p>${sessionScope.user.userPassword}
-	<p>${sessionScope.user.userNo}
+	<p>유저이메일: ${sessionScope.user.userPhoneOrEmail}
+	<p>유저닉네임: ${sessionScope.user.userNickName}
+	<p>유저비밀번호: ${sessionScope.user.userPassword}
+	<p>유저번호: ${sessionScope.user.userNo}
 </body>
 </html>

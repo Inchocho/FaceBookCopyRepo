@@ -27,6 +27,8 @@ public class PostInfoServlet extends HttpServlet{
 		try {
 			int postNum = Integer.parseInt(req.getParameter("postNum"));
 			
+			UserDto userDto = new UserDto();
+			
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");
 			
@@ -35,9 +37,17 @@ public class PostInfoServlet extends HttpServlet{
 			
 			PostDto postDto = new PostDto();
 			
+			//게시글 작성시 게시글 정보(제목,타이틀) 갖고오는 메소드
 			postDto = postDao.selectPostInfo(postNum);
 			
+			//게시글 작성한 유저의 정보를 가져오기 위한 메소드
+			userDto = postDao.selectUser(postNum);
+			
+			//게시글 클릭시 조회수 +1
+			postDao.countUp(postNum);
+			
 			req.setAttribute("postDto", postDto);
+			req.setAttribute("userDto", userDto);
 			
 			RequestDispatcher rd
 				= req.getRequestDispatcher("./postInfo.jsp");

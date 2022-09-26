@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fbc.dao.PostDao;
 import fbc.dto.PostDto;
+import fbc.dto.UserDto;
 
 @WebServlet(value="/post/add")
 public class PostAddServlet extends HttpServlet{
@@ -29,12 +30,16 @@ public class PostAddServlet extends HttpServlet{
 		Connection conn = null;
 		
 		PostDto postDto = new PostDto();
+		UserDto userDto = new UserDto();
 		
 		try {
-			int postNo = Integer.parseInt(req.getParameter("postNo"));		
-			String postTitle = req.getParameter("postTitle");
-			String postContent = req.getParameter("postContent");
 			
+			int postNo = Integer.parseInt(req.getParameter("postNo"));
+			
+			String postTitle = req.getParameter("postTitle");
+			
+			String postContent = req.getParameter("postContent");
+						
 			postDto.setPostNo(postNo);
 			postDto.setPostTitle(postTitle);
 			postDto.setPostContent(postContent);
@@ -45,7 +50,7 @@ public class PostAddServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
-			postDao.insertPost(postDto);	
+			postDao.insertPost(postDto);				
 			
 			resp.sendRedirect("./list");
 			

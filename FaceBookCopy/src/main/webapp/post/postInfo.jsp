@@ -26,9 +26,9 @@
 </head>
 <body>	
 	<div>
-		<input type='text' value='${userDto.userName}' readonly>
+		<input type='text' value='${userDto.userNickName}' name='userNickName' readonly>
 		<input type='text' value='${postDto.postTitle}' name='postTitle' readonly>
-		<input type='text' value='${userDto.userPhoneOrEmail}' readonly>
+		<input type='text' value='${userDto.userPhoneOrEmail}' name='userPhoneOrEmail' readonly>
 		<input type='text' value='${postDto.postContent}' name='postContent' readonly>
 		<input type='password' value='${userDto.userPassword}' readonly>		
 		<c:if test = '${sessionScope.user.userNo eq postDto.postNo}'>

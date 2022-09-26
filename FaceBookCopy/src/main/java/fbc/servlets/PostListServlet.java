@@ -25,7 +25,7 @@ public class PostListServlet extends HttpServlet{
 		
 		Connection conn = null;
 		
-		try {
+		try {			
 			int postCount = 0;
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");

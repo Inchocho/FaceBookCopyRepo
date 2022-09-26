@@ -92,51 +92,52 @@ public class PostDao {
 		}
 	}
 	
-//	//게시판에 유저정보를 보여주기 위한 메소드(user로 이동할예정)
-//	public UserDto selectUser(int userNo) throws Exception{
-//		PreparedStatement pstmt = null;
-//		ResultSet rs = null;
-//		UserDto userDto = null;
-//		
-//		try {
-//			String sql = "";
-//			
-//			sql += "SELECT A.* FROM USER_INFO_TB A";
-//			sql += " , POST_INFO_TB B WHERE";
-//			sql += " A.USER_NO = B.POST_NUM";
-//			sql += " WHERE A.USER_NO = ?";
-//			
-//			pstmt = connection.prepareStatement(sql);
-//			
-//			pstmt.setInt(1, userNo);
-//			
-//			rs = pstmt.executeQuery();
-//			
-//			String userNickName = "";
-//			String userName = "";
-//			String userPhoneOrEmail = "";
-//			String userPassword = "";
-//			
-//			if(rs.next()) {
-//				userNo = rs.getInt(userNo);
-//				userNickName = rs.getString(userNickName);
-//				userName = rs.getString(userName);
-//				userPhoneOrEmail = rs.getString(userPhoneOrEmail);
-//				userPassword = rs.getString(userPassword);
-//			}
-//			
-//			userDto
-//			= new UserDto(userNo, userNickName, userName
-//						, userPhoneOrEmail, userPassword);		
-//			
-//			
-//		} catch(Exception e) {
-//			throw e;
-//		}
-//		
-//		return userDto;
-//		
-//	}
+	//게시판에 유저정보를 보여주기 위한 메소드(user로 이동할예정)
+	public UserDto selectUser(int postNum) throws Exception{
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UserDto userDto = new UserDto();
+		try {
+			String sql = "";
+			
+			sql += "SELECT A.* FROM USER_INFO_TB A";
+			sql += " , POST_INFO_TB B WHERE";
+			sql += " A.USER_NO = B.POST_NO";
+			sql += " AND B.POST_NUM = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, postNum);
+			
+			rs = pstmt.executeQuery();
+			
+			int userNo = 0;
+			String userNickName = "";
+			String userName = "";
+			String userPhoneOrEmail = "";
+			String userPassword = "";
+			
+			if(rs.next()) {
+				userNo = rs.getInt("USER_NO");
+				userNickName = rs.getString("USER_NICKNAME");
+				userName = rs.getString("USER_NAME");
+				userPhoneOrEmail = rs.getString("USER_PHONE_EMAIL");
+				userPassword = rs.getString("USER_PASSWORD");
+			}
+			
+			userDto
+			= new UserDto(userNo, userNickName, userName
+						, userPhoneOrEmail, userPassword);		
+			
+			
+		} catch(Exception e) {
+			throw e;
+		}
+		
+		return userDto;
+		
+	}
 	
 	//게시글 추가
 	public void insertPost(PostDto postDto) throws Exception {
@@ -158,6 +159,7 @@ public class PostDao {
 			pstmt.setString(2, postTitle);		
 			pstmt.setString(3, postContent);
 
+			System.out.println("값이 안들어갔니?");
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -286,6 +288,28 @@ public class PostDao {
 
 			pstmt.executeUpdate();
 			
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+	
+	//게시글 조회수 증가 
+	
+	public void countUp(int postNum) throws Exception{
+		
+		PreparedStatement pstmt = null;
+		
+		try {		
+			String sql = "";
+			sql += "UPDATE POST_INFO_TB SET POST_COUNT = POST_COUNT+1";
+			sql += " WHERE POST_NUM = ?";
+			
+			pstmt = connection.prepareStatement(sql);
+			
+			pstmt.setInt(1, postNum);
+
+			pstmt.executeUpdate();
+		
 		}catch(Exception e) {
 			throw e;
 		}

@@ -32,6 +32,8 @@ public class PostUpdateServlet extends HttpServlet{
 		try {
 			postNum = Integer.parseInt(req.getParameter("postNum"));
 			ServletContext sc = this.getServletContext();
+			
+			UserDto userDto = new UserDto();
 
 			conn = (Connection) sc.getAttribute("conn");
 			
@@ -39,8 +41,12 @@ public class PostUpdateServlet extends HttpServlet{
 		    postDao.setConnection(conn);
 		    
 		    postDto = postDao.selectPostInfo(postNum);
+		    
+			//게시글 작성한 유저의 정보를 가져오기 위한 메소드
+			userDto = postDao.selectUser(postNum);
 			
 		    req.setAttribute("postDto", postDto);
+		    req.setAttribute("userDto", userDto);
 
 			rd = req.getRequestDispatcher("./postUpdateForm.jsp");
 			

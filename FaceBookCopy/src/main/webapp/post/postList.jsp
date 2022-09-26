@@ -52,13 +52,13 @@ h2 {
           </tr>
         </thead>
         <tbody>
-			<c:forEach var="PostDto" items="${postList}">
+			<c:forEach var="postDto" items="${postList}">
 				<tr>				
-					<td>${PostDto.postNum}</td>
-					<td><a href='./info?postNum=${PostDto.postNum}'>${PostDto.postTitle}</a></td>							
-					<td>${PostDto.userNickName}</td>							
-					<td>${PostDto.postCreateDate}</td>
-					<td>${PostDto.postCount}</td>
+					<td>${postDto.postNum}</td>
+					<td><a href='./info?postNum=${postDto.postNum}'>${postDto.postTitle}</a></td>							
+					<td>${postDto.userNickName}</td>							
+					<td>${postDto.postCreateDate}</td>
+					<td>${postDto.postCount}</td>
 				</tr>						
 			</c:forEach>
 			<tr>

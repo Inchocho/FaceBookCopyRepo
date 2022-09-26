@@ -53,7 +53,7 @@ public class LoginDao {
 					userDto.setUserNo(userNo);
 					userDto.setUserPhoneOrEmail(email);
 					userDto.setUserPassword(pwd);
-					userDto.setUserName(userNickName);
+					userDto.setUserNickName(userNickName);
 					
 					// 회원 정보 조회 데이터
 					return userDto;
