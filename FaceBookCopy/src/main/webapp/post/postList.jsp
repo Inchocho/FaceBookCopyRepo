@@ -25,7 +25,7 @@ h2 {
 
 </style>
 
-<script type="text/javascript">
+<script type="text/javascript">	
 	function pageMoveAddFnc(){
 		var url = './add';
 		location.href = url;		
@@ -52,7 +52,7 @@ h2 {
           </tr>
         </thead>
         <tbody>
-			<c:forEach var="postDto" items="${postList}">
+			<c:forEach var="postDto" items="${postList}" begin="${(page-1)*10}" end="${page*10-1}">
 				<tr>				
 					<td>${postDto.postNum}</td>
 					<td><a href='./info?postNum=${postDto.postNum}'>${postDto.postTitle}</a></td>							
@@ -66,9 +66,38 @@ h2 {
 			</tr>	
         </tbody>        
       </table>
-      <input type='button' value='글쓰기' onclick='pageMoveAddFnc()' style="float:right; margin-right:20%">
+      <input type='button' value='글쓰기' onclick='pageMoveAddFnc()' style="float:right; margin-right:20%">      
 </div>
-	
+		<div id="pagemoveDiv">
+			<div id="cre_board">
+				<input type="button" value="글작성" onclick="location.href='./add'">
+			</div>
+			<div id="btnDiv">
+			
+				<c:if test="${page > 1}">
+					<input type="button" value="<이전" 
+						onclick="location.href='./list?page=${page-1}'">
+				</c:if>
+				
+				<c:forEach begin="1" end="${postList.size()/10+0.9}" var="i">
+					<c:if test="${page eq i}">
+						<input type="button" value="${i}"
+							onclick="location.href='./list?page=${i}'"
+							style="color: red;">
+					</c:if>
+					<c:if test="${page ne i}">
+						<input type="button" value="${i}"
+							onclick="location.href='./list?page=${i}'">
+					</c:if>
+				</c:forEach>
+				
+				<c:if test="${page < postList.size()/10}">
+					<input type="button" value="다음>"
+						onclick="location.href='./list?page=${page+1}'">
+				</c:if>
+					
+			</div>
+		</div>
 
 </body>
 </html>

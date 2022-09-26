@@ -26,6 +26,11 @@ public class PostListServlet extends HttpServlet{
 		Connection conn = null;
 		
 		try {			
+			
+			int page = 0;
+			
+			page = Integer.parseInt(req.getParameter("page"));
+			
 			int postCount = 0;
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");
@@ -43,6 +48,7 @@ public class PostListServlet extends HttpServlet{
 			System.out.println("쿼리 실행 ----");
 			req.setAttribute("postList", postList);
 			req.setAttribute("totalPost", postCount);
+			req.setAttribute("page", page);			
 			
 			RequestDispatcher rd
 				= req.getRequestDispatcher("./postList.jsp");
