@@ -24,16 +24,24 @@ h2 {
 
 
 </style>
+
+<script type="text/javascript">
+	function pageMoveAddFnc(){
+		var url = './add';
+		location.href = url;		
+	}
+	
+</script>
+
 </head>
 <body>
-<h2>Responsive Table with DataTables</h2>
 
-<div class="container">
+<div class="container" style="margin-top:300px; margin-left:200px";>
 	전체게시글 : ${totalPost}	
-		<a style="float:right;" href='../user/add'>회원가입</a>
+		<a style="float:right; width:25%" href='../user/add'>회원가입</a>
 		<span style="float:right;">||</span> 
-		<a style="float:right;" href='../auth/login'>로그인</a>
-      <table style="width:100%">        
+		<a style="float:right;" href='../'>로그인</a>
+      <table style="width:80%">        
         <thead style="background-color:skyblue; text-align:left;">
           <tr>
             <th style="width:10%">번호</th>
@@ -47,7 +55,7 @@ h2 {
 			<c:forEach var="PostDto" items="${postList}">
 				<tr>				
 					<td>${PostDto.postNum}</td>
-					<td><a href='./info?postNo=${PostDto.postNo}'>${PostDto.postTitle}</a></td>							
+					<td><a href='./info?postNum=${PostDto.postNum}'>${PostDto.postTitle}</a></td>							
 					<td>${PostDto.userNickName}</td>							
 					<td>${PostDto.postCreateDate}</td>
 					<td>${PostDto.postCount}</td>
@@ -58,10 +66,9 @@ h2 {
 			</tr>	
         </tbody>        
       </table>
-      <c:if test="${startPage > pageCount}">
-      	<a href = "./list?pageNum=${startPage - pageBlock}"></a>
-      </c:if>      
+      <input type='button' value='글쓰기' onclick='pageMoveAddFnc()' style="float:right; margin-right:20%">
 </div>
+	
 
 </body>
 </html>

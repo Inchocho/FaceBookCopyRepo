@@ -41,8 +41,10 @@ public class LoginDao {
 				
 				if (rs.next()) {
 					int userNo = 0;
+					String userNickName = "";
 					
 					userNo = rs.getInt("USER_NO");
+					userNickName = rs.getString("USER_NICKNAME");
 					email = rs.getString("USER_PHONE_EMAIL");
 					pwd = rs.getString("USER_PASSWORD");
 
@@ -51,6 +53,7 @@ public class LoginDao {
 					userDto.setUserNo(userNo);
 					userDto.setUserPhoneOrEmail(email);
 					userDto.setUserPassword(pwd);
+					userDto.setUserName(userNickName);
 					
 					// 회원 정보 조회 데이터
 					return userDto;

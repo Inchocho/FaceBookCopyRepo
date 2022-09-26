@@ -15,15 +15,16 @@
 
 </head>
 <body>
-	<form action="add" method="post">
-		<input type='text' value='${sessionScope.userDto.userName}' readOnly name='name'>
-		<input type='text' value='' name='title'>
-		<input type='text' value='${sessionScope.userDto.userPhoneOrEmail}' name='emailOrPhone' readOnly>
-		<input type='text' value='' name='content'>
-		<input type='password' value='${sessionScope.userDto.userPassword}' readOnly>
+	<form action="./add" method="post">
+		<input type='text' value='${sessionScope.user.userNo}' name='postNo'>
+		<input type='text' value='' name='postTitle'>
+		<input type='text' value='' name='postContent'>
 		<input type='submit' value='글쓰기'>
 		<input type='reset'  value='다시작성'>
 		<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
 	</form>
+	<input type='text' value='유저닉네임' readOnly name='userNickName'>
+	<input type='text' value='이메일' name='emailOrPhone' readOnly>
+	<input type='password' value='비밀번호' readOnly>
 </body>
 </html>

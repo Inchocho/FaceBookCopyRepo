@@ -12,47 +12,40 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fbc.dao.PostDao;
-import fbc.dto.PostDto;
-import fbc.dto.UserDto;
 
-@WebServlet(value="/post/info")
-public class PostInfoServlet extends HttpServlet{
-	
+@WebServlet(value="/post/delete")
+public class postDeleteServlet extends HttpServlet{
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res)
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		
+
 		Connection conn = null;
+		RequestDispatcher rd = null;
 		
 		try {
 			int postNum = Integer.parseInt(req.getParameter("postNum"));
-			
+
 			ServletContext sc = this.getServletContext();
-			conn = (Connection)sc.getAttribute("conn");
+			conn = (Connection) sc.getAttribute("conn");
 			
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
-			PostDto postDto = new PostDto();
+			postDao.deletePost(postNum);
+
+			resp.sendRedirect("./list");
 			
-			postDto = postDao.selectPostInfo(postNum);
+		} catch (Exception e) {
+			//printStackTrace() 개발자를 위한 오류 - 콘솔창에 오류가뜸
+			e.printStackTrace();
 			
-			req.setAttribute("postDto", postDto);
+			req.setAttribute("error", e);
 			
-			RequestDispatcher rd
-				= req.getRequestDispatcher("./postInfo.jsp");
+			rd = req.getRequestDispatcher("/Error.jsp");
 			
-			rd.forward(req, res);
-			
-		} catch(Exception e) {
-			
-		}	
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			rd.forward(req, resp);
+		} 
 	
 	}
-	
 }

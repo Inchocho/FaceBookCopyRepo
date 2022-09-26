@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import fbc.dao.PostDao;
 import fbc.dto.PostDto;
+import fbc.dto.UserDto;
 
 @WebServlet(value="/post/list")
 public class PostListServlet extends HttpServlet{
@@ -25,16 +26,6 @@ public class PostListServlet extends HttpServlet{
 		Connection conn = null;
 		
 		try {
-			int pageSize = 10;
-			
-			String pageNum = req.getParameter("pageNum");
-			if(pageNum == null) {
-				pageNum = "1";
-			}
-			
-			int currentPage = Integer.parseInt(pageNum);
-			int startRow = (currentPage-1)*pageSize + 1;
-			
 			int postCount = 0;
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");
@@ -47,7 +38,7 @@ public class PostListServlet extends HttpServlet{
 			System.out.println("postDao 서버 연결");
 			
 			ArrayList<PostDto> postList 
-				= (ArrayList<PostDto>)postDao.selectPostList(startRow, pageSize);								
+				= (ArrayList<PostDto>)postDao.selectPostList();								
 			
 			System.out.println("쿼리 실행 ----");
 			req.setAttribute("postList", postList);

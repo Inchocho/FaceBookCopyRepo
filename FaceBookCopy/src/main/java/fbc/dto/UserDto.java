@@ -31,7 +31,17 @@ public class UserDto {
 		this.userCreateDate = userCreateDate;
 		this.userModifyDate = userModifyDate;
 	}
-	
+		
+	// 게시판 상세정보에 필요한 유저정보 생성자 추가
+	public UserDto(int userNo, String userName, String userNickName, String userPhoneOrEmail, String userPassword) {
+		super();
+		this.userNo = userNo;
+		this.userName = userName;
+		this.userNickName = userNickName;
+		this.userPhoneOrEmail = userPhoneOrEmail;
+		this.userPassword = userPassword;
+	}
+
 	public UserDto(String userNickName) {
 		super();
 		this.userNickName = userNickName;

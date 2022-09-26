@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fbc.dao.PostDao;
+import fbc.dto.PostDto;
 
 @WebServlet(value="/post/add")
 public class PostAddServlet extends HttpServlet{
@@ -18,7 +19,8 @@ public class PostAddServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
-	
+		
+		resp.sendRedirect("./postAddForm.jsp");
 	}
 
 	@Override
@@ -26,10 +28,16 @@ public class PostAddServlet extends HttpServlet{
 			throws ServletException, IOException {
 		Connection conn = null;
 		
+		PostDto postDto = new PostDto();
+		
 		try {
 			int postNo = Integer.parseInt(req.getParameter("postNo"));		
-			String title = req.getParameter("title");
-			String content = req.getParameter("content");
+			String postTitle = req.getParameter("postTitle");
+			String postContent = req.getParameter("postContent");
+			
+			postDto.setPostNo(postNo);
+			postDto.setPostTitle(postTitle);
+			postDto.setPostContent(postContent);
 			
 			ServletContext sc = this.getServletContext();
 			conn = (Connection)sc.getAttribute("conn");
@@ -37,9 +45,13 @@ public class PostAddServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
-			postDao.insertPost(postNo, title, content);	
+			postDao.insertPost(postDto);	
 			
 			resp.sendRedirect("./list");
+			
+		    // 0이면 넣은 데이터가 없다 0 이외에는 성공
+		    
+			resp.sendRedirect("./list");			
 			
 		} catch(Exception e) {
 			

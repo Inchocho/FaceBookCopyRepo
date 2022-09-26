@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import fbc.dto.PostDto;
+import fbc.dto.UserDto;
 
 public class PostDao {
 	
@@ -18,6 +19,7 @@ public class PostDao {
 		this.connection = conn;
 	}
 
+	//게시글 목록 조회
 	public List<PostDto> selectPostList() throws Exception{
 		
 		PreparedStatement pstmt = null;
@@ -30,7 +32,8 @@ public class PostDao {
 			sql += "SELECT A.POST_NO AS POST_NO , A.POST_NUM AS POST_NUM , A.POST_TITLE AS POST_TITLE , B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE";
 			sql += ", A.POST_COUNT AS POST_COUNT";
 			sql += " FROM POST_INFO_TB A, USER_INFO_TB B";
-			sql += " WHERE A.POST_NO = B.USER_NO";  
+			sql += " WHERE A.POST_NO = B.USER_NO";
+			sql += " ORDER BY POST_NUM DESC";
 			
 			pstmt = connection.prepareStatement(sql);
 
@@ -45,7 +48,6 @@ public class PostDao {
 			Date postCreateDate = null;
 			int count = 0;
 			String userNickName = "";
-			int totalPost = 0;
 			
 			System.out.println("값이 담기기 전");
 			
@@ -90,23 +92,73 @@ public class PostDao {
 		}
 	}
 	
-	public int insertPost(int postNo, String title, String content) throws Exception {
-		int result = 0;
+//	//게시판에 유저정보를 보여주기 위한 메소드(user로 이동할예정)
+//	public UserDto selectUser(int userNo) throws Exception{
+//		PreparedStatement pstmt = null;
+//		ResultSet rs = null;
+//		UserDto userDto = null;
+//		
+//		try {
+//			String sql = "";
+//			
+//			sql += "SELECT A.* FROM USER_INFO_TB A";
+//			sql += " , POST_INFO_TB B WHERE";
+//			sql += " A.USER_NO = B.POST_NUM";
+//			sql += " WHERE A.USER_NO = ?";
+//			
+//			pstmt = connection.prepareStatement(sql);
+//			
+//			pstmt.setInt(1, userNo);
+//			
+//			rs = pstmt.executeQuery();
+//			
+//			String userNickName = "";
+//			String userName = "";
+//			String userPhoneOrEmail = "";
+//			String userPassword = "";
+//			
+//			if(rs.next()) {
+//				userNo = rs.getInt(userNo);
+//				userNickName = rs.getString(userNickName);
+//				userName = rs.getString(userName);
+//				userPhoneOrEmail = rs.getString(userPhoneOrEmail);
+//				userPassword = rs.getString(userPassword);
+//			}
+//			
+//			userDto
+//			= new UserDto(userNo, userNickName, userName
+//						, userPhoneOrEmail, userPassword);		
+//			
+//			
+//		} catch(Exception e) {
+//			throw e;
+//		}
+//		
+//		return userDto;
+//		
+//	}
+	
+	//게시글 추가
+	public void insertPost(PostDto postDto) throws Exception {
 		PreparedStatement pstmt = null;
 
 		try {
+			int postNo = postDto.getPostNo();
+			String postTitle = postDto.getPostTitle();
+			String postContent = postDto.getPostContent();
+			
 			String sql = "";
 
-			sql += "INSERT INTO POST_LIST_TB"; 
+			sql += "INSERT INTO POST_INFO_TB"; 
 			sql += " VALUES(POST_INFO_TB_POST_NUM_SEQ.NEXTVAL, ?, ?, ?, SYSDATE, SYSDATE, 0)";
 
 			pstmt = connection.prepareStatement(sql);
 
 			pstmt.setInt(1, postNo);
-			pstmt.setString(2, title);		
-			pstmt.setString(3, content);
+			pstmt.setString(2, postTitle);		
+			pstmt.setString(3, postContent);
 
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			throw e;
@@ -121,10 +173,10 @@ public class PostDao {
 
 		} // finally 종료
 
-		return result;
 	}
 	
-	public PostDto selectPostInfo(int postNo) throws Exception{
+	//게시글 상세정보 보기(수정시에도 사용)
+	public PostDto selectPostInfo(int postNum) throws Exception{
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -133,19 +185,19 @@ public class PostDao {
 		try {
 			String sql = "";
 			sql += "SELECT * FROM POST_INFO_TB";
-			sql += " WHERE POST_NO = ?";
+			sql += " WHERE POST_NUM = ?";
 			
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, postNo);
+			pstmt.setInt(1, postNum);
 			
 			rs = pstmt.executeQuery();
-			
+
+			int postNo = 0;
 			String postTitle = "";
 			String content = "";
 			
 			while (rs.next()) {
 				System.out.println();
-				int postNum = 0;
 				postNo = rs.getInt("POST_NO");
 				postNum = rs.getInt("POST_NUM");
 				postTitle = rs.getString("POST_TITLE");
@@ -163,47 +215,8 @@ public class PostDao {
 			throw e;
 		}
 	}
-	
-	public PostDto selectOne(int postNo) throws Exception{
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		PostDto postDto = null;
-		
-		try {
-			String sql = "";
-			sql += "SELECT * ";
-			sql += " FROM POST_INFO_TB";
-			sql += " WHERE POST_NO = ?";
-			
-			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, postNo);
-			
-			rs = pstmt.executeQuery();
-			
-			String postTitle = "";
-			String content = "";			
-			int postNum = 0;
-			
-			if(rs.next()) {
-				postTitle = rs.getString("POST_TITLE");
-				content = rs.getString("POST_CONTENT");
-				postNo = rs.getInt("POST_NO");
-				postNum = rs.getInt("POST_NUM");
-				
-				
-				postDto = new PostDto(postTitle, content, postNo, postNum);			
-				
-				System.out.println("값이 담긴 후 전달");
-			}
-		
-		} catch(Exception e) {
-			
-		}
-		
-		return postDto;
-	}
-	
-	public void updatePost(int postNo, String post_title, String post_content) throws Exception{
+
+	public void updatePost(int postNo, String post_title, String post_content, int postNum) throws Exception{
 		
 		PreparedStatement pstmt = null;		
 		
@@ -211,13 +224,15 @@ public class PostDao {
 			String sql = "";
 			sql += "UPDATE POST_INFO_TB";
 			sql += " SET POST_TITLE = ?";
-			sql += " ,POST_CONTENT = ?";
+			sql += " , POST_CONTENT = ?";
 			sql += " WHERE POST_NO = ?";
+			sql += " AND POST_NUM = ?";
 			
 			pstmt = connection.prepareStatement(sql);
 			pstmt.setString(1, post_title);
 			pstmt.setString(2, post_content);
 			pstmt.setInt(3, postNo);
+			pstmt.setInt(4, postNum);
 			
 			pstmt.executeUpdate();
 			
@@ -226,6 +241,7 @@ public class PostDao {
 		}
 	}
 	
+	//게시글 갯수 조회(총 게시글)
 	public int countPost() throws Exception{
 		
 		ResultSet rs = null;
@@ -234,14 +250,14 @@ public class PostDao {
 		
 		try {
 			String sql = "";
-			sql += "SELECT MAX(POST_NUM) AS TOTAL_POST FROM POST_INFO_TB";
+			sql += "SELECT COUNT(*) AS TOTAL_COUNT FROM POST_INFO_TB";
 			
 			pstmt = connection.prepareStatement(sql);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				count = rs.getInt(1);								
+				count = rs.getInt("TOTAL_COUNT");								
 			}
 			
 			return count;			
@@ -254,80 +270,26 @@ public class PostDao {
 		
 	}
 	
-	//전체 조회에 페이징처리 추가
-	public List<PostDto> selectPostList(int startRow, int pageSize) throws Exception{
+	//게시글 삭제
+	public void deletePost(int postNum) throws Exception{
 		
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
 		
 		try {
 			String sql = "";
-			
-			System.out.println("sql 실행전 ----");
-			sql += "SELECT A.POST_NO AS POST_NO , A.POST_NUM AS POST_NUM , A.POST_TITLE AS POST_TITLE , B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE";
-			sql += ", A.POST_COUNT AS POST_COUNT";
-			sql += " FROM POST_INFO_TB A, USER_INFO_TB B";
-			sql += " WHERE A.POST_NO = B.USER_NO";
-			sql += " LIMIT ?,?";
+			sql += "DELETE FROM POST_INFO_TB";
+			sql += " WHERE POST_NUM = ?";
 			
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setInt(1, startRow - 1);
-			pstmt.setInt(2, pageSize);
 
-			rs = pstmt.executeQuery();
-			System.out.println("sql 실행후 ----");
+			pstmt.setInt(1, postNum);
 
-			ArrayList<PostDto> postList = new ArrayList<>();
+			pstmt.executeUpdate();
 			
-			int postNum = 0;
-			int postNo = 0;
-			String postTitle = "";
-			Date postCreateDate = null;
-			int count = 0;
-			String userNickName = "";
-			int totalPost = 0;
-			
-			System.out.println("값이 담기기 전");
-			
-			while (rs.next()) {
-				System.out.println();
-				postNum = rs.getInt("POST_NUM"); 
-				postNo = rs.getInt("POST_NO");
-				postTitle = rs.getString("POST_TITLE");
-				postCreateDate = rs.getDate("POST_CREATEDATE");
-				count = rs.getInt("POST_COUNT");
-				userNickName = rs.getString("USER_NICKNAME");
-				
-				PostDto postDto
-				= new PostDto(postNum, postNo, postTitle
-							, postCreateDate, count, userNickName);		
-				
-				System.out.println("값이 담긴 후 전달");
-				postList.add(postDto);
-			}
-
-			return postList;					
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch(Exception e) {
 			throw e;
-		} finally {
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-
 		}
 	}
+	
 	
 }
