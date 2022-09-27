@@ -14,6 +14,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="../header.jsp"/>
 	<form action="update" method="post">
 		<div>
 			<input type='text' value='${userDto.userNo} 유저 고유번호' name='userNo'>
@@ -32,5 +33,6 @@
 	유저 번호: ${sessionScope.user.userNo}
 	유저 이름: ${sessionScope.user.userName}
 	유저 비밀번호: ${sessionScope.user.userPassword}
+	<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

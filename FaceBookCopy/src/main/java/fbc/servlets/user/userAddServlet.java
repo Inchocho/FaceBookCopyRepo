@@ -1,4 +1,4 @@
-package fbc.servlets;
+package fbc.servlets.user;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fbc.dto.UserDto;
+import fbc.dto.user.UserDto;
 
 @WebServlet(value = "/user/add")
 //신규 회원 추가 페이지 CRUD Create

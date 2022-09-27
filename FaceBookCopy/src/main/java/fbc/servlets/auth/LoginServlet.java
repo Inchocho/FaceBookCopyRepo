@@ -1,4 +1,4 @@
-package fbc.servlets;
+package fbc.servlets.auth;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fbc.dao.LoginDao;
-import fbc.dto.UserDto;
+import fbc.dao.auth.LoginDao;
+import fbc.dto.user.UserDto;
 
 @WebServlet(value = "/auth/login")
 public class LoginServlet extends HttpServlet{

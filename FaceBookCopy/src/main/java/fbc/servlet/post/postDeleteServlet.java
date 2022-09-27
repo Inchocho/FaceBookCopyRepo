@@ -1,4 +1,4 @@
-package fbc.servlets;
+package fbc.servlet.post;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fbc.dao.PostDao;
+import fbc.dao.post.PostDao;
 
 @WebServlet(value="/post/delete")
 public class postDeleteServlet extends HttpServlet{

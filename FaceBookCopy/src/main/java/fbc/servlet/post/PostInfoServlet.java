@@ -1,4 +1,4 @@
-package fbc.servlets;
+package fbc.servlet.post;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fbc.dao.PostDao;
-import fbc.dto.PostDto;
-import fbc.dto.UserDto;
+import fbc.dao.post.PostDao;
+import fbc.dto.post.PostDto;
+import fbc.dto.user.UserDto;
 
 @WebServlet(value="/post/info")
 public class PostInfoServlet extends HttpServlet{
@@ -25,6 +25,8 @@ public class PostInfoServlet extends HttpServlet{
 		Connection conn = null;
 		
 		try {
+			int page = Integer.parseInt(req.getParameter("page"));
+			
 			int postNum = Integer.parseInt(req.getParameter("postNum"));
 			
 			UserDto userDto = new UserDto();
@@ -48,6 +50,7 @@ public class PostInfoServlet extends HttpServlet{
 			
 			req.setAttribute("postDto", postDto);
 			req.setAttribute("userDto", userDto);
+			req.setAttribute("page", page);
 			
 			RequestDispatcher rd
 				= req.getRequestDispatcher("./postInfo.jsp");

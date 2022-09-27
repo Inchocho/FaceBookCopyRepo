@@ -1,4 +1,4 @@
-package fbc.servlets;
+package fbc.servlets.auth;
 
 import java.io.IOException;
 

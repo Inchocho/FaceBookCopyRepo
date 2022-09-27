@@ -8,7 +8,7 @@
 <title>${postDto.postNo}번 게시글 상세정보</title>
 <script type="text/javascript">
 	function pageMoveListFnc(){
-		var url = './list';
+		var url = './list?page=' + ${page};
 		location.href = url;		
 	}
 
@@ -25,6 +25,7 @@
 </script>
 </head>
 <body>	
+	<jsp:include page="../header.jsp"/>	
 	<div>
 		<input type='text' value='${userDto.userNickName}' name='userNickName' readonly>
 		<input type='text' value='${postDto.postTitle}' name='postTitle' readonly>
@@ -36,10 +37,12 @@
 		<input type='submit' id='submit' value='삭제하기' onclick='pageMoveDeleteFnc()'>
 		</c:if>			
 		<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
+		페이지 번호: ${page}
 	</div>
 	
 	유저 번호: ${sessionScope.user.userNo}
 	유저 닉네임: ${sessionScope.user.userNickName}
 	유저 비밀번호: ${sessionScope.user.userPassword}
+	<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

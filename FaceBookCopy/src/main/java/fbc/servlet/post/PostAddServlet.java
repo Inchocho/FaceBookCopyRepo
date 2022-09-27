@@ -1,4 +1,4 @@
-package fbc.servlets;
+package fbc.servlet.post;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fbc.dao.PostDao;
-import fbc.dto.PostDto;
-import fbc.dto.UserDto;
+import fbc.dao.post.PostDao;
+import fbc.dto.post.PostDto;
+import fbc.dto.user.UserDto;
 
 @WebServlet(value="/post/add")
 public class PostAddServlet extends HttpServlet{

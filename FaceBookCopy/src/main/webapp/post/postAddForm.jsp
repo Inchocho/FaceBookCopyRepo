@@ -15,6 +15,7 @@
 
 </head>
 <body>
+	<jsp:include page="../header.jsp"/>	
 	<form action="./add" method="post">
 		유저 번호:  <input type='text' value='${sessionScope.user.userNo}' name='postNo' readOnly>
 		유저 닉네임: <input type='text' value='${sessionScope.user.userNickName}' name='userNickName' readOnly>
@@ -25,6 +26,7 @@
 		<input type='submit' value='글쓰기'>
 		<input type='reset'  value='다시작성'>
 		<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
-	</form>						
+	</form>		
+	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

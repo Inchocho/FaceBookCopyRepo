@@ -1,4 +1,4 @@
-package fbc.dto;
+package fbc.dto.user;
 
 import java.util.Date;
 

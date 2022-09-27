@@ -1,4 +1,4 @@
-package fbc.dao;
+package fbc.dao.auth;
 
 public class LogoutDao {
 
