@@ -80,13 +80,13 @@ public class userAddServlet extends HttpServlet {
 				System.out.println("회원가입 실패");
 			}
 			
-			res.sendRedirect("../auth/login");				
+			res.sendRedirect("../user/signUpAgreement.jsp");				
 			
 		} catch (Exception e) {
 
 			req.setAttribute("error", e);
 
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/Error.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/ErrorPage.jsp");
 			dispatcher.forward(req, res);
 
 		} 
