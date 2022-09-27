@@ -166,6 +166,19 @@ width: 100%;
 			textInput[i].placeholder = placeHolder[i].textContent;
 		}
 		
+		var userIdObj = document.getElementById("userId");
+		userIdObj.addEventListener('keyup', function(e) {
+			var userIdck = document.getElementById("userIdck");
+			var email_format = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; 
+			
+			if(email_format.test(userIdObj.value)){
+				userIdck.hidden = false;
+			}else{
+				userIdck.hidden = true;
+				userIdck.value = '(phone)'+ userIdObj.value;
+			}
+		},);
+		
 		var signUpBtn = document.getElementById("signUpBtn");
 		var signAgree = false;
 		var inputSignUpObj = document.getElementById("_d4_2");
@@ -182,7 +195,7 @@ width: 100%;
 			}
 			
 			if (textInput[0].value == '' || textInput[1].value == ''
-					|| textInput[2].value == '' || textInput[3].value == '' || textInput[4].value == ''
+					|| textInput[2].value == '' || textInput[3].value == ''
 					|| selectorSel[0].value > 2008 || !radiochk) {
 				event.preventDefault();
 				for (var i = 0; i < textInput.length; i++) {
@@ -255,18 +268,6 @@ width: 100%;
 			}
 		}, );
 		
-		var userIdObj = document.getElementById("userId");
-		userIdObj.addEventListener('keyup', function(e) {
-			var userIdck = document.getElementById("userIdck");
-			var email_format = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/; 
-			
-			if(email_format.test(userIdObj.value)){
-				userIdck.hidden = false;
-			}else{
-				userIdck.hidden = true;
-				userIdck.value = '(phone)'+ userIdObj.value;
-			}
-		},);
 		
 	}
 </script>
