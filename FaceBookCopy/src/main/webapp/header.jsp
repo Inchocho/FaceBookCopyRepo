@@ -1,72 +1,21 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   	
-<html>
-<head>
-<meta charset="utf-8" />
-<title>The Overflowing Church</title>
-<style>
-#topMenu {
-	height: 30px;
-	width: 1500px;
-}
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 
-#topMenu ul li {
-	list-style: none;
-	color: white;
-	background-color: #2d2d2d;
-	float: left;
-	line-height: 30px;
-	vertical-align: middle;
-	text-align: center;
-}
+<div style="background-color: white; height: 300px; padding: 5px; width: 1050px;
+	margin-top: 10px;">
+	<div style="height:50px">
+		<h1 style='color:#0040FF; background-color:white; text-align:center; height:100%; border:2px solid #0040FF'>FaceBookCopy Project Team 
+		<span style="float:right"><a href="<%=request.getContextPath()%>/auth/logout"><img alt="로그아웃" src="<%=request.getContextPath()%>/img/headerImg3.png" width="40px" height="100%"></a></span></h1>
+	</div>
+	<div style='width:100%;'>
+	<h2 style='color:white; background-color:white; text-align:center;'>
+	<span><a href="<%=request.getContextPath()%>/index.jsp"><img src="<%=request.getContextPath()%>/img/footerImg1.png" alt="페북로고"
+	width="20%" height="200"></img></a></span>
+	<span><img src="<%=request.getContextPath()%>/img/footerImg2.png" alt="페이스북"
+	width="75%" height="200"><img/></span>
+	<br>
+	</h2>
 
-#topMenu .menuLink {
-	text-decoration: none;
-	color: white;
-	display: block;
-	width: 300px;
-	font-size: 12px;
-	font-weight: bold;
-	font-family: "Trebuchet MS", Dotum, Arial;
-}
-
-#topMenu .menuLink:hover {
-	color: red;
-	background-color: #4d4d4d;
-}
-</style>
-<script>
-	function listFnc() {
-		var url = './post/list';
-		location.href = url;
-	}
-
-	function userAddFnc() {
-		var url = './post/list';
-		location.href = url;
-	}
-
-	function listFnc() {
-		var url = './post/list';
-		location.href = url;
-	}
-</script>
-</head>
-<body>
-	<nav id="topMenu">
-		<ul>
-			<li><a class="menuLink" href="./post/list?page=1">게시판 목록</a></li>
-			<c:if test='${sessionScope.user.userNo ne null}'>
-				<li><a class="menuLink" href="./auth/logout">로그아웃</a></li>
-			</c:if>
-		</ul>
-	</nav>
-	
-	<p>유저이메일: ${sessionScope.user.userPhoneOrEmail}
-	<p>유저닉네임: ${sessionScope.user.userNickName}
-	<p>유저비밀번호: ${sessionScope.user.userPassword}
-	<p>유저번호: ${sessionScope.user.userNo}
-</body>
-</html>
+	</div>
+</div>
