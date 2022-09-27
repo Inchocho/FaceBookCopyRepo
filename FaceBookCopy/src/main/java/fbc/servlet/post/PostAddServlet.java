@@ -61,11 +61,17 @@ public class PostAddServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
-			postDao.insertPost(postDto);				
+			postDao.insertPost(postDto);
 			
-			resp.sendRedirect("./list?page=" + page);
+//			String forStr = "";	(100개 넣을때 예제)			
 			
-		    // 0이면 넣은 데이터가 없다 0 이외에는 성공
+//			예시데이터 100개 넣을때 			
+//			for(int i = 0 ; i<100; i++) {		
+//				forStr = forStr+(i+1)+"번째";
+//				req.setAttribute("a", forStr);
+//				postDao.insertPost(postDto, forStr);
+//				forStr = "";
+//			}
 		    
 			resp.sendRedirect("./list?page=" + page);			
 			

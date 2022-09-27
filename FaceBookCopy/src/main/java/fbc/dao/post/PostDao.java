@@ -148,10 +148,14 @@ public class PostDao {
 			String postTitle = postDto.getPostTitle();
 			String postContent = postDto.getPostContent();
 			
+			System.out.println(postNo);
+			System.out.println(postTitle);
+			System.out.println(postContent);
+			
 			String sql = "";
 
 			sql += "INSERT INTO POST_INFO_TB"; 
-			sql += " VALUES(POST_INFO_TB_POST_NUM_SEQ.NEXTVAL, ?, ?, ?, SYSDATE, SYSDATE, 0)";
+			sql += " VALUES(POST_INFO_POST_NUM_SEQ.NEXTVAL, ?, ?, ?, SYSDATE, SYSDATE, 0)";
 
 			pstmt = connection.prepareStatement(sql);
 
@@ -387,4 +391,46 @@ public class PostDao {
 //
 //		}
 //	}	
+	
+	//게시글 추가 (테스트용 100개)
+	public void insertTestPost(PostDto postDto, String a) throws Exception {
+		PreparedStatement pstmt = null;
+
+		try {
+			int postNo = postDto.getPostNo();
+			String postTitle = postDto.getPostTitle();
+			String postContent = postDto.getPostContent();
+			
+			System.out.println(a + "SQL 시점");
+			
+			String sql = "";
+
+			sql += "INSERT INTO POST_INFO_TB"; 
+			sql += " VALUES(POST_INFO_POST_NUM_SEQ.NEXTVAL, ?, ?, ?, SYSDATE, SYSDATE, 0)";
+
+			pstmt = connection.prepareStatement(sql);
+
+			pstmt.setInt(1, postNo);
+			pstmt.setString(2, postTitle + a);		
+			pstmt.setString(3, postContent + a);
+
+			System.out.println("값이 안들어갔니?");
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		} // finally 종료
+
+	}
+
+	
 }
