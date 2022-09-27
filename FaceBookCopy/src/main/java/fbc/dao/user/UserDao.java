@@ -66,11 +66,12 @@ public class UserDao {
 					e2.printStackTrace();
 				}
 			}
-		}
+		}//finally end
 		return null;
 	}//selectOne end
 	
 	public UserDto insertUser() {
+		ResultSet rs = null;
 		
 		try {
 			
@@ -85,7 +86,25 @@ public class UserDao {
 		
 		} catch (Exception e) {
 			// TODO: handle exception
-		}
+		}finally {
+			// 6 단계 jdbc 객체 메모리 회수
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if (pstmt != null) {
+				try {
+					pstmt.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+					e2.printStackTrace();
+				}
+			}
+		}//finally end
 		return null;
 	}
 }
