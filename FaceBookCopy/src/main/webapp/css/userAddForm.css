@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+#closeBtnX {
+	width: 24px;
+	aspect-ratio: auto 24/24;
+	height: 24px;
+	position: absolute;
+	right: 24px;
+	top: 12px;
+	z-index: 2;
+}
+
+a {
+	color: #385898;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+body, button, input, label, select, td, textarea {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+label {
+	vertical-align: middle;
+}
+
+input, select, ._d4_fo_sp {
+	background-color: #fff;
+	border: 1px solid #ccd0d5;
+	box-sizing: border-box;
+	display: inline-block;
+	flex: 1 0 auto;
+	font-weight: normal;
+	height: 36px;
+	margin: 8px 6px 6px;
+	padding: 0;
+	position: relative;
+	width: auto;
+}
+
+._d1 {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	width: 100%;
+}
+
+._d2 {
+	display: inline-block;
+	margin: 20px;
+	position: relative;
+	text-align: left;
+}
+
+._d3 {
+	align-items: center;
+	background-color: #fff;
+	border-radius: 8px 8px 0 0;
+	box-sizing: border-box;
+	padding: 10px 16px;
+	position: relative;
+	width: 432px;
+	z-index: 1;
+}
+
+#_d4_fd {
+	color: #1c1e21;
+	font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 38px;
+	margin-bottom: 0;
+}
+
+#_d4_sd {
+	color: #606770;
+	font-family: SFProText-Regular, Helvetica, Arial, sans-serif;
+	font-size: 15px;
+	line-height: 24px;
+}
+
+._d4 {
+	background-color: #fff;
+	border-radius: 0 0 8px 8px;
+	border-top: 1px solid #dadde1;
+	box-sizing: border-box;
+	padding: 16px;
+	position: relative;
+	width: 432px;
+	border: 1px solid black;
+	font-family: inherit;
+}
+
+.signUp_header {
+	align-items: center;
+	background-color: #fff;
+	border-radius: 8px 8px 0 0;
+	box-sizing: border-box;
+	padding: 10px 16px;
+	position: relative;
+	width: 432px;
+	z-index: 1;
+}
+
+.labelgen {
+	cursor: default;
+	box-sizing: border-box;
+	padding: 0 28px 0 10px;
+	width: 100%;
+	vertical-align: middle;
+	font-weight: normal;
+	display: inline-block;
+	font-family: SFProText-Medium, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 36px;
+}
+
+#radio_wrap {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -8px -6px -6px;
+	width: 411px;
+}
+#rad_1, #rad_2, #rad_3{
+	display: inline-block;
+	background-color: initial;
+    cursor: default;
+    appearance: auto;
+    box-sizing: border-box;   
+    padding: initial;
+    border: initial;
+    height: 36px;
+    margin: 0;
+    position: absolute;
+    right: 10px;
+    top: 0;
+}

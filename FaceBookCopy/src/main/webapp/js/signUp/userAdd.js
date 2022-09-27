@@ -1,4 +1,4 @@
-
+window.onload = function() {
 var birthYObj = document.getElementById("bir_year");
 var birthMObj = document.getElementById("bir_month");
 var birthDObj = document.getElementById("bir_day");
@@ -136,4 +136,4 @@ agreeBtn.addEventListener('click', function(e) {
 
 	}
 });
-
+}
