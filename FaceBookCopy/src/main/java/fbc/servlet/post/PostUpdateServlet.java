@@ -30,6 +30,11 @@ public class PostUpdateServlet extends HttpServlet{
 		int postNum = 0;
 
 		try {
+			int page = Integer.parseInt(req.getParameter("page"));
+			
+			req.setAttribute("page", page);
+			
+			
 			postNum = Integer.parseInt(req.getParameter("postNum"));
 			ServletContext sc = this.getServletContext();
 			
@@ -70,6 +75,11 @@ public class PostUpdateServlet extends HttpServlet{
 		RequestDispatcher rd = null;
 		
 		try {
+			int page = Integer.parseInt(req.getParameter("page"));
+			
+			req.setAttribute("page", page);
+			
+			
 			int postNo = Integer.parseInt(req.getParameter("postNo"));
 			int postNum = Integer.parseInt(req.getParameter("postNum"));
 			String postTitle = req.getParameter("postTitle");
@@ -83,7 +93,7 @@ public class PostUpdateServlet extends HttpServlet{
 			postDao.setConnection(conn);
 			postDao.updatePost(postNo, postTitle, postContent, postNum);
 			
-			resp.sendRedirect("./list");
+			resp.sendRedirect("./list?page=" + page);
 			
 		} catch (Exception e) {
 			//printStackTrace() 개발자를 위한 오류 - 콘솔창에 오류가뜸

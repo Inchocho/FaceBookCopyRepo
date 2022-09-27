@@ -7,7 +7,7 @@
 <title>${postDto.postNo}번 게시글 수정중</title>
 <script type="text/javascript">
 	function pageMoveListFnc(){
-		var url = './list';
+		var url = './list?page=' + ${page};
 		location.href = url;		
 	}
 	
@@ -15,7 +15,7 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"/>
-	<form action="update" method="post">
+	<form action="update?page=${page}" method="post">
 		<div>
 			<input type='text' value='${userDto.userNo} 유저 고유번호' name='userNo'>
 			<input type='text' value='${postDto.postNo}' name='postNo' style="display:none">

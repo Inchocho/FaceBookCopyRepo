@@ -3,6 +3,7 @@ package fbc.servlet.post;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +22,15 @@ public class PostAddServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		
-		resp.sendRedirect("./postAddForm.jsp");
+		int page = Integer.parseInt(req.getParameter("page"));
+		
+		req.setAttribute("page", page);
+		
+		RequestDispatcher rd =
+				req.getRequestDispatcher("./postAddForm.jsp");
+		
+		rd.forward(req, resp);
+				
 	}
 
 	@Override
@@ -30,9 +39,11 @@ public class PostAddServlet extends HttpServlet{
 		Connection conn = null;
 		
 		PostDto postDto = new PostDto();
-		UserDto userDto = new UserDto();
 		
 		try {
+			int page = Integer.parseInt(req.getParameter("page"));
+			
+			req.setAttribute("page", page);
 			
 			int postNo = Integer.parseInt(req.getParameter("postNo"));
 			
@@ -52,11 +63,11 @@ public class PostAddServlet extends HttpServlet{
 			
 			postDao.insertPost(postDto);				
 			
-			resp.sendRedirect("./list");
+			resp.sendRedirect("./list?page=" + page);
 			
 		    // 0이면 넣은 데이터가 없다 0 이외에는 성공
 		    
-			resp.sendRedirect("./list");			
+			resp.sendRedirect("./list?page=" + page);			
 			
 		} catch(Exception e) {
 			

@@ -27,7 +27,7 @@ h2 {
 
 <script type="text/javascript">	
 	function pageMoveAddFnc(){
-		var url = './add';
+		var url = './add?page=' + ${page};		
 		location.href = url;		
 	}
 	
@@ -36,7 +36,7 @@ h2 {
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="width:1050px; height:550px">
+<div class="container" style="width:1050px; height:550px; margin-top:100px">
 	<div style="width:100%">
 	전체게시글 : ${totalPost}	
 		<a style="float:right;" href='../user/add'>회원가입</a>

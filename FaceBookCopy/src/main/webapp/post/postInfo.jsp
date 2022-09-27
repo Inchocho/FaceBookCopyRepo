@@ -13,14 +13,15 @@
 	}
 
 	function pageMoveUpdateFnc(){
-		var url = './update?postNum=' + ${postDto.postNum};
+		var url = './update?postNum=' + ${postDto.postNum} + '&page=' + ${page};
 		location.href = url;		
 	}	
 	
 	function pageMoveDeleteFnc(){
-		var url = './delete?postNum=' + ${postDto.postNum};
+		var url = './delete?postNum=' + ${postDto.postNum} + '&page=' + ${page};
 		location.href = url;		
 	}		
+	
 	
 </script>
 </head>

@@ -24,6 +24,10 @@ public class postDeleteServlet extends HttpServlet{
 		RequestDispatcher rd = null;
 		
 		try {
+			int page = Integer.parseInt(req.getParameter("page"));
+			
+			req.setAttribute("page", page);
+			
 			int postNum = Integer.parseInt(req.getParameter("postNum"));
 
 			ServletContext sc = this.getServletContext();
@@ -34,7 +38,7 @@ public class postDeleteServlet extends HttpServlet{
 			
 			postDao.deletePost(postNum);
 
-			resp.sendRedirect("./list");
+			resp.sendRedirect("./list?page=" + page);
 			
 		} catch (Exception e) {
 			//printStackTrace() 개발자를 위한 오류 - 콘솔창에 오류가뜸
