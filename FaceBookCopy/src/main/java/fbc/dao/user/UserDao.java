@@ -70,32 +70,39 @@ public class UserDao {
 		return null;
 	}//selectOne end
 	
-	public UserDto insertUser() {
-		ResultSet rs = null;
-		
+	public int insertUser(UserDto userDto) {
+		int rslt = 0;
 		try {
 			
 		String sql = "";
-		sql += "INSERT INTO MEMBERS";
+		sql += "INSERT INTO USER_INFO_TB";
 		sql += " VALUES (USER_INFO_USER_NO_SEQ.NEXTVAL," 
 			+ " ?, null, ?, ?, ?, ?, SYSDATE, SYSDATE)";
 		
 		pstmt = connection.prepareStatement(sql);
 		
+		pstmt.setString(1, userDto.getUserName());
+		pstmt.setString(2, userDto.getUserPhoneOrEmail());
+		pstmt.setString(3, userDto.getUserPassword());
+		pstmt.setString(4, userDto.getUserBirth());
+		pstmt.setString(5, userDto.getUserGender());
 		
+		System.out.println(1);
+		System.out.println(userDto.getUserName());
+		System.out.println(userDto.getUserPhoneOrEmail());
+		System.out.println(userDto.getUserPassword());
+		System.out.println(userDto.getUserBirth());
+		System.out.println(userDto.getUserGender());
+		System.out.println(5);
 		
+		System.out.println("ex+");
+		rslt = pstmt.executeUpdate();
+		System.out.println("ex"+rslt);
+		return rslt;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}finally {
 			// 6 단계 jdbc 객체 메모리 회수
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 			if (pstmt != null) {
 				try {
 					pstmt.close();
@@ -105,6 +112,6 @@ public class UserDao {
 				}
 			}
 		}//finally end
-		return null;
+		return rslt;
 	}
 }

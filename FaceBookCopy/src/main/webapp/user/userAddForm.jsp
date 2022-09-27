@@ -57,7 +57,7 @@
 					<div class="placeholder" hidden="true">휴대폰 번호 또는 이메일</div>
 					<input type="text" name="userId" class="inputText" id="userId">
 					<div hidden="true" id="userIdck">
-					<input type="text" name="userIdck" placeholder="이메일 재입력"></div>
+					<input type="text" name="userIdck" placeholder="이메일 재입력" id="hidId"></div>
 				</div>
 				<div>
 					<!-- 	<div>placeholderInput/placeholderInputEmpty 인풋조건에따라 클래스를 바꿔주자</div> -->
@@ -94,6 +94,9 @@
 						<span class="_d4_fo_sp">
 						 <label class="labelgen" for="rad_3">개인지정</label>
 						 <input	type="radio" name="sex" value="-1" id="rad_3">
+						</span>
+						<span hidden="true">
+						 <input type="text" name="genderSel" id="genderSel">
 						</span>
 					</span>
 				</div>

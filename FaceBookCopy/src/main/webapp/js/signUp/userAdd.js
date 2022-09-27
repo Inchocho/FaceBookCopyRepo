@@ -39,13 +39,15 @@ var userIdObj = document.getElementById("userId");
 
 userIdObj.addEventListener('keyup', function(e) {
 	var userIdck = document.getElementById("userIdck");
+	var hiddenIdObj = document.getElementById("hidId");
 	var email_format = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 
 	if (email_format.test(userIdObj.value)) {
 		userIdck.hidden = false;
+		hiddenIdObj.value = "";
 	} else {
 		userIdck.hidden = true;
-		userIdck.value = '(phone)' + userIdObj.value;
+		hiddenIdObj.value = '(phone)' + userIdObj.value;
 	}
 });
 
@@ -54,6 +56,7 @@ var signAgree = false;
 var inputSignUpObj = document.getElementById("_d4_2");
 var agreeSignUpObj = document.getElementById("_d4_ag");
 agreeSignUpObj.hidden = true;
+
 function txtErCheck() {
 	for (var i = 0; i < radioObj.length; i++) {
 		if (radioObj[i].checked) {

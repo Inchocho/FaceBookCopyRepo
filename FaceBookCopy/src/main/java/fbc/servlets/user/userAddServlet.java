@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fbc.dao.user.UserDao;
 import fbc.dto.user.UserDto;
 
 @WebServlet(value = "/user/add")
@@ -36,58 +37,68 @@ public class userAddServlet extends HttpServlet {
 		System.out.println("go doPost");
 
 		Connection conn = null;
-		UserDto userDto = new UserDto();		
-		boolean signUpChk = false;
+		UserDto userDto = null;		
+		int signUpChk = 0;
 		// 포맷터
-		SimpleDateFormat formatter 
-		= new SimpleDateFormat("YYYYMMDD");
+//		SimpleDateFormat formatter 
+//		= new SimpleDateFormat("YYYYMMDD");
 		
 		try {
-			String name = req.getParameter("lastname") + " " + req.getParameter("fistname");
-			String id = req.getParameter("userId");
+			String username = req.getParameter("lastname") + " " + req.getParameter("fistname");
+			String userid = req.getParameter("userId");
 			String pwd = req.getParameter("pwd");
 			// 문자열 -> Date        
-	        String dateStr 
-	        = req.getParameter("birth_Y")
-	        + req.getParameter("birth_M")
-	        + req.getParameter("birth_D");	        
-	        Date birth = formatter.parse(dateStr);
+	        String dateStr = "";
+	        dateStr	+= req.getParameter("birth_Y");
+	        String btM = req.getParameter("birth_M");
+	        String btD = req.getParameter("birth_D");	
+	        if(Integer.parseInt(btM) < 10) {
+	        	btM = 0 + btM;
+	        }
+	        if(Integer.parseInt(btD) < 10) {
+	        	btD = 0 + btD;
+	        }
+	        dateStr += btM + btD;
+//	        Date birth = formatter.parse(dateStr);
 	        String gender = "";
 	        String genderCheck = req.getParameter("sex");
-	        
-	        if(genderCheck == "0") {
+	        System.out.println(genderCheck + "확인");
+	        if(genderCheck.equals("0")) {
+	        	System.out.println("나 0번");
 	        	gender = "여성";
-	        }else if(genderCheck == "1") {
+	        }else if(genderCheck.equals("1")) {
+	        	System.out.println("나 1번");
 	        	gender = "남성";
 	        }else {
+	        	System.out.println("나는 나머지");
 	        	gender = "개인지정";
 //	        	gender = req.getParameter("otherSex");
 	        }
 	        
-	        
-			userDto.setUserName(name);
-			userDto.setUserPhoneOrEmail(id);
-			userDto.setUserPassword(pwd);
-			userDto.setUserBirth(birth);
-			userDto.setUserGender(gender);
-			
+			userDto = new UserDto(username, userid, pwd, dateStr, gender);
 			ServletContext sc = this.getServletContext();
+			conn = (Connection) sc.getAttribute("conn");
 			
-			conn = (Connection)sc.getAttribute("conn");
+			UserDao userDao = new UserDao();
+			userDao.setConnection(conn);
+			signUpChk = userDao.insertUser(userDto);
 			
-			
-			if(signUpChk) {
+			if(signUpChk == 0) {
 				System.out.println("회원가입 실패");
+				res.sendError(0021);
+				res.sendRedirect("../ErrorPage.jsp");
+			}else {
+				res.sendRedirect("../index.jsp");				
+				
 			}
 			
-			res.sendRedirect("../user/signUpAgreement.jsp");				
 			
 		} catch (Exception e) {
-
-			req.setAttribute("error", e);
-
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/ErrorPage.jsp");
-			dispatcher.forward(req, res);
+//
+//			req.setAttribute("error", e);
+//
+//			RequestDispatcher dispatcher = req.getRequestDispatcher("/ErrorPage.jsp");
+//			dispatcher.forward(req, res);
 
 		} 
 	}

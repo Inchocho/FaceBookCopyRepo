@@ -9,7 +9,7 @@ public class UserDto {
 	private String userNickName = "";
 	private String userPhoneOrEmail = "";
 	private String userPassword = "";
-	private Date userBirth = null;
+	private String userBirth = "";
 	private String userGender = "";
 	private Date userCreateDate = null;
 	private Date userModifyDate = null;
@@ -19,7 +19,7 @@ public class UserDto {
 	}
 
 	public UserDto(int userNo, String userName, String userNickName, String userPhoneOrEmail, String userPassword,
-			Date userBirth, String userGender, Date userCreateDate, Date userModifyDate) {
+			String userBirth, String userGender, Date userCreateDate, Date userModifyDate) {
 		super();
 		this.userNo = userNo;
 		this.userName = userName;
@@ -49,7 +49,7 @@ public class UserDto {
 	}
 
 	//가입에 필요한 유저정보 생성자
-	public UserDto(String userName, String userPhoneOrEmail, String userPassword, Date userBirth, String userGender) {
+	public UserDto(String userName, String userPhoneOrEmail, String userPassword, String userBirth, String userGender) {
 		super();
 		this.userName = userName;
 		this.userPhoneOrEmail = userPhoneOrEmail;
@@ -103,11 +103,11 @@ public class UserDto {
 		this.userPassword = userPassword;
 	}
 
-	public Date getUserBirth() {
+	public String getUserBirth() {
 		return userBirth;
 	}
 
-	public void setUserBirth(Date userBirth) {
+	public void setUserBirth(String userBirth) {
 		this.userBirth = userBirth;
 	}
 
