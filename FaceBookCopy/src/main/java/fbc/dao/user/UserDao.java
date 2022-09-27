@@ -1,4 +1,4 @@
-package fbc.user.dao;
+package fbc.dao.user;
 
 public class UserDao {
 
