@@ -36,6 +36,7 @@ for (var i = 0; i < placeHolder.length; i++) {
 }
 
 var userIdObj = document.getElementById("userId");
+
 userIdObj.addEventListener('keyup', function(e) {
 	var userIdck = document.getElementById("userIdck");
 	var email_format = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;

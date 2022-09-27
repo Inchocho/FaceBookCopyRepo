@@ -42,9 +42,25 @@ public class UserDto {
 		this.userPassword = userPassword;
 	}
 
-	public UserDto(String userNickName) {
+	public UserDto(String userName, String userNickName) {
 		super();
 		this.userNickName = userNickName;
+		this.userName = userName;
+	}
+
+	//가입에 필요한 유저정보 생성자
+	public UserDto(String userName, String userPhoneOrEmail, String userPassword, Date userBirth, String userGender) {
+		super();
+		this.userName = userName;
+		this.userPhoneOrEmail = userPhoneOrEmail;
+		this.userPassword = userPassword;
+		this.userBirth = userBirth;
+		this.userGender = userGender;
+	}
+
+	public UserDto(String userPhoneOrEmail) {
+		super();
+		this.userPhoneOrEmail = userPhoneOrEmail;
 	}
 
 	public int getUserNo() {
