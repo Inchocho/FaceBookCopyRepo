@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import fbc.dao.auth.LoginDao;
+import fbc.dao.auth.AuthDao;
 import fbc.dto.user.UserDto;
 
 @WebServlet(value = "/auth/login")
@@ -40,11 +40,11 @@ public class LoginServlet extends HttpServlet{
 
 			conn = (Connection)sc.getAttribute("conn");
 
-			LoginDao LoginDao = new LoginDao();
-			LoginDao.setConnection(conn);
+			AuthDao authDao = new AuthDao();
+			authDao.setConnection(conn);
 			
 			
-			UserDto userDto = LoginDao.login(email, pwd);
+			UserDto userDto = authDao.login(email, pwd);
 			
 			// 회원이 없다면 로그인 실패 페이지로 이동
 			if(userDto == null) {
@@ -69,7 +69,6 @@ public class LoginServlet extends HttpServlet{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			throw new ServletException(e);
 		}
 		
 		

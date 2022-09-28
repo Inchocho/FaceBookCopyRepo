@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(urlPatterns = {"/auth/logout"})
-public class LogoutServlet extends HttpServlet{
+@WebServlet(value = "/auth/logout")
+public class LogoutServlet extends HttpServlet {
 
 	@Override
-	protected void doGet(HttpServletRequest req
-			, HttpServletResponse res) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		HttpSession session = req.getSession();
 		session.invalidate();
-		
-		res.sendRedirect("../authLogout.jsp");
-	}
-	
-}
 
+		res.sendRedirect("../auth/login");
+	}
+
+}
