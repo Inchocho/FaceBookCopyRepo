@@ -1,4 +1,5 @@
 window.onload = function() {
+//birth항목 셀렉터 옵션추가
 var birthYObj = document.getElementById("bir_year");
 var birthMObj = document.getElementById("bir_month");
 var birthDObj = document.getElementById("bir_day");
@@ -23,23 +24,21 @@ for (var i = 0; i < 31; i++) {
 		+ "</option>";
 }
 birthDObj.innerHTML = htmlStr;
-
+//birth항목 셀렉터 옵션추가 end
+//<div>placeHolder를 inputText에 placeHolder로적용
 var placeHolder = document.getElementsByClassName("placeholder");
 var textInput = document.getElementsByClassName("inputText");
-var selectorSel = document.getElementsByClassName("selectors");
-var radioSp = document.getElementsByClassName("_d4_fo_sp");
-var radioObj = document.getElementsByName("sex");
-var radiochk = false;
 
 for (var i = 0; i < placeHolder.length; i++) {
 	textInput[i].placeholder = placeHolder[i].textContent;
 }
-
+//
+//userId 이메일정규식적용, id유효성검사
 var userIdObj = document.getElementById("userId");
+var hiddenIdObj = document.getElementById("hidId");
 
 userIdObj.addEventListener('keyup', function(e) {
 	var userIdck = document.getElementById("userIdck");
-	var hiddenIdObj = document.getElementById("hidId");
 	var email_format = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
 
 	if (email_format.test(userIdObj.value)) {
@@ -47,18 +46,32 @@ userIdObj.addEventListener('keyup', function(e) {
 		hiddenIdObj.value = "";
 	} else {
 		userIdck.hidden = true;
-		hiddenIdObj.value = '(phone)' + userIdObj.value;
+		hiddenIdObj.value = userIdObj.value;
 	}
 });
+hiddenIdObj.addEventListener('keyup', function(e) {
+	if(hiddenIdObj.value == userIdObj.value){
+		hiddenIdObj.style.border = '1px solid #ccd0d5';	
+	}else{
+		hiddenIdObj.style.border = '1px solid red';
+	}	
+});
 
+
+//
+//가입버튼 유효성검사,
 var signUpBtn = document.getElementById("signUpBtn");
 var signAgree = false;
 var inputSignUpObj = document.getElementById("_d4_2");
 var agreeSignUpObj = document.getElementById("_d4_ag");
-agreeSignUpObj.hidden = true;
+agreeSignUpObj.hidden = true; //동의항목 숨김
+var radioSp = document.getElementsByClassName("_d4_fo_sp");
+var radioObj = document.getElementsByName("sex");
+var radiochk = false;
+var selectorSel = document.getElementsByClassName("selectors");
 
 function txtErCheck() {
-	for (var i = 0; i < radioObj.length; i++) {
+	for (var i = 0; i < radioObj.length; i++) {//성별체크
 		if (radioObj[i].checked) {
 			radiochk = true;
 			break;
@@ -74,22 +87,22 @@ function txtErCheck() {
 		for (var i = 0; i < textInput.length; i++) {
 			textInput[i].style.border = '1px solid red';
 			if (textInput[i].value != '') {
-				textInput[i].style.border = '1px solid gray';
+				textInput[i].style.border = '1px solid #ccd0d5';
 			}
 		}
 		for (var i = 0; i < selectorSel.length; i++) {
 			selectorSel[i].style.border = '1px solid red';
 			if (selectorSel[0].value <= 2008) {
-				selectorSel[i].style.border = '1px solid gray';
+				selectorSel[i].style.border = '1px solid #ccd0d5';
 			}
 		}
 		for (var i = 0; i < radioSp.length; i++) {
 			radioSp[i].style.border = '1px solid red';
 			if (radiochk) {
-				radioSp[i].style.border = '1px solid gray';
+				radioSp[i].style.border = '1px solid #ccd0d5';
 			}
 		}
-	} else if (!signAgree) {
+	} else if (!signAgree) {//동의항목 체크
 		inputSignUpObj.hidden = true;
 		agreeSignUpObj.hidden = false;
 	}

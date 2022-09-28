@@ -107,7 +107,7 @@ ul{
 		<h2 id="firstLetter">Facebook에서 전세계에 있는 친구,가족,지인들과 함께 이야기를 나눠보세요</h2>
 
 		<div id="loginMainBox"><!-- 로그인 모델 박스 시작 -->
-			<form id="loginMainBox" action="./auth/login" method="post">
+			<form id="loginMainBox" action="./login" method="post">
 				<input id="loginEmail" type="text" name="email" placeholder="이메일 또는 전화번호"
 					onblur="this.placeholder='이메일 또는 전화번호'"><br> 
 				<input id="loginPassword" type="password" name="password" placeholder="비밀번호"

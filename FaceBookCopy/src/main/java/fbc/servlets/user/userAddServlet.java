@@ -75,24 +75,25 @@ public class userAddServlet extends HttpServlet {
 //	        	gender = req.getParameter("otherSex");
 	        }
 	        
-			userDto = new UserDto(username, userid, pwd, dateStr, gender);
 			ServletContext sc = this.getServletContext();
 			conn = (Connection) sc.getAttribute("conn");
 			
 			UserDao userDao = new UserDao();
 			userDao.setConnection(conn);
-			signUpChk = userDao.insertUser(userDto);
 			
-			if(signUpChk == 0) {
-				System.out.println("회원가입 실패");
-				res.sendError(0021);
-				res.sendRedirect("../ErrorPage.jsp");
+			if(userDao.selectOne(userid) != null) {//id 유효성검사
+				res.sendRedirect("../패스워드찾기페이지");
 			}else {
-				res.sendRedirect("../index.jsp");				
-				
+				userDto
+				= new UserDto(username, userid, pwd, dateStr, gender);
+				signUpChk = userDao.insertUser(userDto);
+				if(signUpChk == 0) {
+					System.out.println("회원가입 실패");
+					res.sendRedirect("../ErrorPage.jsp");
+				}else {
+					res.sendRedirect("../auth/authSignUpSuccess.jsp");				
+				}
 			}
-			
-			
 		} catch (Exception e) {
 
 			req.setAttribute("error", e);
