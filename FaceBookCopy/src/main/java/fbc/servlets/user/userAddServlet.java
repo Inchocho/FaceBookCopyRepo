@@ -94,11 +94,11 @@ public class userAddServlet extends HttpServlet {
 			
 			
 		} catch (Exception e) {
-//
-//			req.setAttribute("error", e);
-//
-//			RequestDispatcher dispatcher = req.getRequestDispatcher("/ErrorPage.jsp");
-//			dispatcher.forward(req, res);
+
+			req.setAttribute("error", e);
+
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/ErrorPage.jsp");
+			dispatcher.forward(req, res);
 
 		} 
 	}
