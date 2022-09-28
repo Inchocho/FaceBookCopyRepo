@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import fbc.dao.post.PostDao;
 
 @WebServlet(value="/post/delete")
-public class postDeleteServlet extends HttpServlet{
+public class PostDeleteServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
