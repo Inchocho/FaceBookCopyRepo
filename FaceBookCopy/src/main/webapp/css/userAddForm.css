@@ -24,6 +24,9 @@ body, button, input, label, select, td, textarea {
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
 }
+div{
+	margin-bottom: 10px;
+}
 
 label {
 	vertical-align: middle;
@@ -41,6 +44,10 @@ input, select, ._d4_fo_sp {
 	padding: 0;
 	position: relative;
 	width: auto;
+}
+input{
+	margin: 0;
+	padding: 11px;
 }
 
 ._d1 {
@@ -60,12 +67,15 @@ input, select, ._d4_fo_sp {
 ._d3 {
 	align-items: center;
 	background-color: #fff;
-	border-radius: 8px 8px 0 0;
+	border-radius: 8px;
+	border-color: #f5f6f7;
+	border-style: solid;
 	box-sizing: border-box;
 	padding: 10px 16px;
 	position: relative;
-	width: 432px;
+	width:455px;
 	z-index: 1;
+	overflow: visible;
 }
 
 #_d4_fd {
@@ -92,7 +102,6 @@ input, select, ._d4_fo_sp {
 	padding: 16px;
 	position: relative;
 	width: 432px;
-	border: 1px solid black;
 	font-family: inherit;
 }
 
@@ -103,7 +112,7 @@ input, select, ._d4_fo_sp {
 	box-sizing: border-box;
 	padding: 10px 16px;
 	position: relative;
-	width: 432px;
+	width: 430px;
 	z-index: 1;
 }
 
@@ -139,4 +148,46 @@ input, select, ._d4_fo_sp {
     position: absolute;
     right: 10px;
     top: 0;
+}
+#signUpBtn{
+	background: none;
+    background-color: #00a400;
+    border: none;
+    border-radius: 6px;
+    box-shadow: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    height: 36px;
+    overflow: hidden;
+    padding: 0 32px;
+    text-shadow: none;
+	cursor:pointer;
+}
+#signBtn_d{
+	text-align: center;
+}
+.inputText, #hidId{
+	background-color: #f5f6f7;
+	border-color: #ccd0d5;
+    width: 375px;
+}
+._d_fullname{
+	width: 400px;
+	height: 50px;
+	margin-bottom: 0px;
+}
+#lastname_d, #firstname_d{
+	margin-right: 8px;
+	margin-bottom: 10px;
+	display: inline-block;
+    position: relative;
+    width: 180px;
+    height: 40px;
+   
+}
+#lname_input, #fname_input{
+	width: 184px;
+	padding: 11px;
+	margin: 0;
 }

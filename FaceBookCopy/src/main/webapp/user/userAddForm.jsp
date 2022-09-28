@@ -18,7 +18,7 @@
 <!--  -->
 <body>
 <div class="_d1">
-<div class="_d2" style="margin: 10px">
+<div class="_d2">
 	<div class="_d3" id="_d3">
 		
 		<jsp:include page="/signUpHeader.jsp"></jsp:include>
@@ -39,19 +39,14 @@
 				</div>
 			</div>
 			<div class="_d4" id="_d4_2">
-			가입정보입력
 				<div class="_d_fullname">
-					fullName
-					<div>
-						lastname
+					<div id="lastname_d">
 						<div class="placeholder" hidden="true">성(姓)</div>
-						<input type="text" name="lastname" class="inputText"
-							placeholder="성(姓)">
+						<input type="text" name="lastname" class="inputText" id="lname_input">
 					</div>
-					<div>
-						firstname
+					<div id="firstname_d">
 						<div class="placeholder" hidden="true">이름(성은 제외)</div>
-						<input type="text" name="fistname" class="inputText">
+						<input type="text" name="fistname" class="inputText" id="fname_input">
 					</div>
 				</div>
 				<div>
@@ -124,7 +119,7 @@
 					</p>
 				</div>
 				<!-- 여까지 -->
-				<div>
+				<div id="signBtn_d">
 					<button type="button" id="signUpBtn">가입하기</button>
 				</div>
 			</div>
