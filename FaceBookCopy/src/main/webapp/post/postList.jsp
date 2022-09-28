@@ -40,8 +40,15 @@ h2 {
 	<div style="width:100%">
 	전체게시글 : ${totalPost}	
 		<a style="float:right;" href='../user/add'>회원가입</a>
-		<span style="float:right;">||</span> 
-		<a style="float:right;" href='../'>로그인</a>
+		<span style="float:right;">||</span>
+		<c:choose> 
+			<c:when test='${sessionScope.user.userNo eq null}'>
+				<a style="float:right;" href='../'>로그인</a>
+			</c:when>
+			<c:when test='${sessionScope.user.userNo ne null}'>
+				<a style="float:right;" href='../'>로그아웃</a>
+			</c:when>
+		</c:choose>
       <table style="width:100%">        
         <thead style="background-color:skyblue; text-align:left;">
           <tr>

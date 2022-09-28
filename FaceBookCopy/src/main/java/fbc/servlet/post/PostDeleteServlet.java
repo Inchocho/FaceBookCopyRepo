@@ -24,20 +24,28 @@ public class PostDeleteServlet extends HttpServlet{
 		RequestDispatcher rd = null;
 		
 		try {
+			System.out.println("삭제 시작 1번");
 			int page = Integer.parseInt(req.getParameter("page"));
+			
+			System.out.println(page + "page의 값 << 2번");
 			
 			req.setAttribute("page", page);
 			
 			int postNum = Integer.parseInt(req.getParameter("postNum"));
+			
+			System.out.println(postNum + "postNum의 값 << 3번");
 
 			ServletContext sc = this.getServletContext();
 			conn = (Connection) sc.getAttribute("conn");
-			
+
+			System.out.println("DB연결 << 4번");
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
+			System.out.println("DB에서 쿼리문 실행 <<5번");
 			postDao.deletePost(postNum);
 
+			System.out.println("DB에서 쿼리문 실행 후 결과 << 6번");
 			resp.sendRedirect("./list?page=" + page);
 			
 		} catch (Exception e) {

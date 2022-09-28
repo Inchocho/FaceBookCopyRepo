@@ -64,7 +64,6 @@ public class PostDao {
 				= new PostDto(postNum, postNo, postTitle
 							, postCreateDate, count, userNickName);		
 				
-				System.out.println("값이 담긴 후 전달");
 				postList.add(postDto);
 			}
 
@@ -283,14 +282,17 @@ public class PostDao {
 		PreparedStatement pstmt = null;
 		
 		try {
+			System.out.println("SQL 쿼리 들어오기 확인 ##");
 			String sql = "";
 			sql += "DELETE FROM POST_INFO_TB";
 			sql += " WHERE POST_NUM = ?";
 			
 			pstmt = connection.prepareStatement(sql);
 
+			System.out.println(postNum + "값이 잘 넘어왔니? 쿼리");
 			pstmt.setInt(1, postNum);
 
+			System.out.println("쿼리 실행전 체크");
 			pstmt.executeUpdate();
 			
 		}catch(Exception e) {

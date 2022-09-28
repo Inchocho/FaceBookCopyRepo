@@ -42,12 +42,10 @@ public class PostListServlet extends HttpServlet{
 			
 			postCount = postDao.countPost();
 			
-			System.out.println("postDao 서버 연결");
 			
 			ArrayList<PostDto> postList 
 				= (ArrayList<PostDto>)postDao.selectPostList();								
 			
-			System.out.println("쿼리 실행 ----");
 			req.setAttribute("postList", postList);
 			req.setAttribute("totalPost", postCount);
 			req.setAttribute("page", page);			
@@ -56,7 +54,6 @@ public class PostListServlet extends HttpServlet{
 				= req.getRequestDispatcher("./postList.jsp");
 			
 			rd.forward(req, resp);
-			System.out.println("postList.jsp로 전달");
 			
 		} catch(Exception e) {
 			
