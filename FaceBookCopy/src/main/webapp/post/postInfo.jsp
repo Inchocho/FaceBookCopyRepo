@@ -142,7 +142,7 @@
 							비밀번호
 						</td>
 						<td class='valueC'>
-							<input id='password' type='password' value='${sessionScope.user.userPassword}' name=' userPassword' readOnly>
+							<input id='password' type='password' value='${sessionScope.user.userPassword}' name='userPassword' readOnly>
 						</td>
 						<td>
 						</td>

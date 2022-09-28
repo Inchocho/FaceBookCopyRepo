@@ -61,19 +61,24 @@ public class PostAddServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
-			postDao.insertPost(postDto);
+			String passwordChk = "";
 			
-//			String forStr = "";	(100개 넣을때 예제)			
+			String password = req.getParameter("userPassword");
 			
-//			예시데이터 100개 넣을때 			
-//			for(int i = 0 ; i<100; i++) {		
-//				forStr = forStr+(i+1)+"번째";
-//				req.setAttribute("a", forStr);
-//				postDao.insertPost(postDto, forStr);
-//				forStr = "";
-//			}
-		    
-			resp.sendRedirect("./list?page=" + page);			
+			passwordChk = postDao.matchingPassword(password);
+			
+			if(passwordChk.equals(password)) {
+				postDao.insertPost(postDto);
+				resp.sendRedirect("./list?page=" + page);		
+			}else {
+				req.setAttribute("wrongPassword", passwordChk);
+				req.setAttribute("postDto", postDto);
+				
+				RequestDispatcher rd
+					= req.getRequestDispatcher("./postAddForm.jsp");
+				
+				rd.forward(req, resp);
+			}
 			
 		} catch(Exception e) {
 			

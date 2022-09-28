@@ -433,6 +433,37 @@ public class PostDao {
 		} // finally 종료
 
 	}
+	
+	//게시판 글 작성,수정시 패스워드가 내가 입력한 패스워드와 일치하는지 확인하는 로직
+	public String matchingPassword(String userPassword) throws Exception{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String result = "";
+		
+		try {
+			String sql = "";
+			sql += "SELECT USER_PASSWORD, USER_NO, USER_NAME FROM USER_INFO_TB";
+			sql += " WHERE USER_PASSWORD = ?";
+					
+			pstmt = connection.prepareStatement(sql);
+			pstmt.setString(1, userPassword);
+			
+			rs = pstmt.executeQuery();
+			
+			String password = "";
+			
+			if(rs.next()) {
+				password = rs.getString("USER_PASSWORD");
+				result = password;
+				return result;
+			}else {
+				result = userPassword + "꽝";
+				return result;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+	}
 
 	
 }

@@ -12,6 +12,22 @@
 		location.href = url;				
 	}
 	
+	window.onload = function(){
+		addSubmitBtnObj = document.getElementById('addSubmitBtn');
+	}
+	
+	function addSubmitChk(e){
+		
+		if(${sessionScope.user.userPassword} != ${wrongPassword}){
+			e.preventDefault();
+			alert('비밀번호가 틀립니다');
+			addSubmitBtnObj.value.focus();
+		}
+		
+	}
+	
+	addSubmitBtnObj.addEventListener('click',addSubmitChk);
+	
 </script>
 <style type="text/css">
 	#addForm{
@@ -78,6 +94,8 @@
 
 </head>
 <body>
+	틀린비밀번호: ${wrongPassword} <br>
+	비밀번호: ${sessionScope.user.userPassword}
 	<jsp:include page="../header.jsp"/>	
 	<form id='addForm' action="./add?page=${page}" method="post">		
 	<div id='test1'>
@@ -105,7 +123,7 @@
 							제목
 						</td>
 						<td class='valueC'>
-							<input id='title' type='text' value='' name='postTitle'>
+							<input id='title' type='text' value='${postDto.postTitle}' name='postTitle'>
 						</td>
 						<td></td>
 					</tr>
@@ -122,7 +140,7 @@
 							내용
 						</td>
 						<td class='valueC'>
-							<textarea name="postContent" cols="100" rows="20"></textarea>
+							<textarea name="postContent" cols="100" rows="20">${postDto.postContent}</textarea>
 						</td>					
 						<td>
 						</td>						
@@ -132,14 +150,14 @@
 							비밀번호
 						</td>
 						<td class='valueC'>
-							<input id='password' type='password' value='${sessionScope.user.userPassword}' name=' userPassword' readOnly>
+							<input id='password' type='password' value='' name='userPassword'>
 						</td>
 						<td>
 						</td>
 					</tr>
 					<tr>
 						<td id='btnTd' colspan='3' class='firstC'>
-							<input type='submit' value='글쓰기'>
+							<input type='submit' value='글쓰기' id='addSubmitBtn'>
 							<input type='reset' value='다시작성'>
 							<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
 						</td>
