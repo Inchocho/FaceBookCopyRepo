@@ -58,7 +58,7 @@
 </head>
 <body>	
 	<jsp:include page="header.jsp"/>
-<div class="container" style="width:1050px; height:550px">
+<div class="container" style="width:1050px; height:550px; margin:auto">
 	<nav id="topMenu">
 		<ul>
 			<li><a class="menuLink" href="./post/list?page=1">게시판 목록</a></li>
