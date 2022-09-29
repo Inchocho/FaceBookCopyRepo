@@ -17,11 +17,11 @@
 </head>
 <body>
 	<jsp:include page="../header.jsp"/>
-	<form id='updateForm' action="update?page=${page}" method="post">		
+	<form id='updateForm' action="update?page=${page}" method="post" style="margin:auto">		
 	<div id='test1'>
 		<div id='tableContainer'>
 			<div id='writeTitle'>
-				글쓰기
+				${postDto.postNum}번 게시글
 			</div>					
 			<table id='table1'>			
 					<tr>
@@ -31,7 +31,7 @@
 					</tr>
 					<tr>
 						<td class='firstC'>
-							이름
+							닉네임
 						</td>
 						<td class='valueC'>
 							<input id='userNick' type='text' value='${sessionScope.user.userNickName}' name='userNickName' readOnly>
@@ -93,11 +93,13 @@
 	</form>		
 	
 	<c:if test='${sessionScope.user.userNickName eq "관리자"}'>
+		<div style='margin:auto; width:1050px;'>
 		틀린 비밀번호: <input type='text' value='${wrongPassword}'>
 		유저 번호: ${sessionScope.user.userNo}
 		유저 이름: ${sessionScope.user.userName}
 		유저 닉네임: ${sessionScope.user.userNickName}
 		유저 비밀번호: ${sessionScope.user.userPassword}
+		</div>
 	</c:if>
 
 	<jsp:include page="../footer.jsp"/>	

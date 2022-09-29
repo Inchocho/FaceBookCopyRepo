@@ -1,8 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+<style>
+#horizontal {
+	width: 200px;
+	height: 150px;
+	margin: auto;
+	background-color: white;
+}
+</style>
 
-<div style="background-color: white; height: 300px; padding: 5px; width: 1050px;
+
+<div id='horizontal' style="background-color: white; height: 300px; padding: 5px; width: 1050px;
 	margin-top: 10px;">
 	<div style="height:60px">
 		<h1 style='color:#0040FF; background-color:white; text-align:center; height:100%; border:2px solid #0040FF'>FaceBookCopy Project Team 

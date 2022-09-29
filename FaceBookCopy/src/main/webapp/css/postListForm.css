@@ -7,7 +7,8 @@
 #containerDiv{
 	width: 1050px;
 	height: 550px;
-	margin-top: 100px;
+	margin: auto;
+	
 }
 
 .rightFloat{
@@ -16,7 +17,15 @@
 
 #listTab{
 	width: 100%;
+	border-top: 1px solid #444444;
+	border-collapse: collapse;
 }
+
+.borderTr {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+
 
 #listTab > thead{
 	background-color: skyblue;
@@ -45,5 +54,9 @@
 
 #cBtn{
 	color: red;
+}
+
+#moveInfo{
+	color: green;
 }
 

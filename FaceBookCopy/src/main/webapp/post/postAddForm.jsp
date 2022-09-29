@@ -16,12 +16,9 @@
 
 </head>
 <body>
-	<c:if test='${sessionScope.user.userNickName eq "관리자"}'>
-		틀린 비밀번호: <input type='text' value='${wrongPassword}'>
-	</c:if>
-	<jsp:include page="../header.jsp"/>	
-	<form id='addForm' action="./add?page=${page}" method="post">		
-	<div id='test1'>
+	<jsp:include page="../header.jsp"/>
+	<div id='test1'>	
+	<form id='addForm' action="./add?page=${page}" method="post" style="margin:auto">		
 		<div id='tableContainer'>
 			<div id='writeTitle'>
 				글쓰기
@@ -34,7 +31,7 @@
 					</tr>
 					<tr>
 						<td class='firstC'>
-							이름
+							닉네임
 						</td>
 						<td class='valueC'>
 							<input id='userNick' type='text' value='${sessionScope.user.userNickName}' name='userNickName' readOnly>
@@ -88,9 +85,15 @@
 				</tbody>
 			</table>
 		</div>
-	</div>	
 	<input type='text' value='${sessionScope.user.userNo}' name='postNo' readOnly hidden="true">
-	</form>	
+	</form>
+	</div>		
+	<c:if test='${sessionScope.user.userNickName eq "관리자"}'>
+	<div style='width:1050px; margin:auto'>
+		틀린 비밀번호: <input type='text' value='${wrongPassword}'>
+	</div>
+	</c:if>
+	
 	<jsp:include page="../footer.jsp"/>
 </body>
 </html>

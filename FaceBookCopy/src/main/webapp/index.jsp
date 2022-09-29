@@ -63,7 +63,7 @@
 		<ul>
 			<li><a class="menuLink" href="./post/list?page=1">게시판 목록</a></li>
 			<c:if test='${sessionScope.user.userNo ne null}'>
-				<li><a class="menuLink" href="./auth/logout">로그아웃</a></li>
+				<li><a class="menuLink" href="./auth/authPasswordCheck">로그아웃</a></li>
 			</c:if>
 		</ul>
 	</nav>	

@@ -33,7 +33,7 @@
 		</c:choose>
       <table id='listTab' style="width:100%">        
         <thead>
-          <tr>
+          <tr class='borderTr'>
             <th id='th1' style="width:10%">번호</th>
             <th id='th2' style="width:30%">제목</th>
             <th id='th3' style="width:20%">글쓴이</th>
@@ -43,9 +43,9 @@
         </thead>
         <tbody>
 			<c:forEach var="postDto" items="${postList}" begin="${(page-1)*10}" end="${page*10-1}">
-				<tr>				
+				<tr class='borderTr'>				
 					<td>${postDto.postNum}</td>
-					<td><a href='./info?postNum=${postDto.postNum}&page=${page}'>${postDto.postTitle}</a></td>							
+					<td id='moveInfo'><a href='./info?postNum=${postDto.postNum}&page=${page}'>${postDto.postTitle}</a></td>							
 					<td>${postDto.userNickName}</td>							
 					<td>${postDto.postCreateDate}</td>
 					<td>${postDto.postCount}</td>

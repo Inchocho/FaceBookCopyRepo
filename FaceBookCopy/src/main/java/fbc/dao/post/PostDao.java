@@ -28,7 +28,6 @@ public class PostDao {
 		try {
 			String sql = "";
 			
-			System.out.println("sql 실행전 ----");
 			sql += "SELECT A.POST_NO AS POST_NO , A.POST_NUM AS POST_NUM , A.POST_TITLE AS POST_TITLE , B.USER_NICKNAME AS USER_NICKNAME , A.POST_CREATEDATE AS POST_CREATEDATE";
 			sql += ", A.POST_COUNT AS POST_COUNT";
 			sql += " FROM POST_INFO_TB A, USER_INFO_TB B";
@@ -38,7 +37,6 @@ public class PostDao {
 			pstmt = connection.prepareStatement(sql);
 
 			rs = pstmt.executeQuery();
-			System.out.println("sql 실행후 ----");
 
 			ArrayList<PostDto> postList = new ArrayList<>();
 			
@@ -49,10 +47,7 @@ public class PostDao {
 			int count = 0;
 			String userNickName = "";
 			
-			System.out.println("값이 담기기 전");
-			
 			while (rs.next()) {
-				System.out.println();
 				postNum = rs.getInt("POST_NUM"); 
 				postNo = rs.getInt("POST_NO");
 				postTitle = rs.getString("POST_TITLE");
@@ -147,10 +142,6 @@ public class PostDao {
 			String postTitle = postDto.getPostTitle();
 			String postContent = postDto.getPostContent();
 			
-			System.out.println(postNo);
-			System.out.println(postTitle);
-			System.out.println(postContent);
-			
 			String sql = "";
 
 			sql += "INSERT INTO POST_INFO_TB"; 
@@ -162,7 +153,6 @@ public class PostDao {
 			pstmt.setString(2, postTitle);		
 			pstmt.setString(3, postContent);
 
-			System.out.println("값이 안들어갔니?");
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
@@ -202,15 +192,12 @@ public class PostDao {
 			String content = "";
 			
 			while (rs.next()) {
-				System.out.println();
 				postNo = rs.getInt("POST_NO");
 				postNum = rs.getInt("POST_NUM");
 				postTitle = rs.getString("POST_TITLE");
 				content = rs.getString("POST_CONTENT");
 				
 				postDto = new PostDto(postTitle, content, postNo, postNum);		
-				
-				System.out.println("값이 담긴 후 전달");
 				
 			}			
 			
@@ -282,17 +269,14 @@ public class PostDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-			System.out.println("SQL 쿼리 들어오기 확인 ##");
 			String sql = "";
 			sql += "DELETE FROM POST_INFO_TB";
 			sql += " WHERE POST_NUM = ?";
 			
 			pstmt = connection.prepareStatement(sql);
 
-			System.out.println(postNum + "값이 잘 넘어왔니? 쿼리");
 			pstmt.setInt(1, postNum);
 
-			System.out.println("쿼리 실행전 체크");
 			pstmt.executeUpdate();
 			
 		}catch(Exception e) {
@@ -403,8 +387,6 @@ public class PostDao {
 			String postTitle = postDto.getPostTitle();
 			String postContent = postDto.getPostContent();
 			
-			System.out.println(a + "SQL 시점");
-			
 			String sql = "";
 
 			sql += "INSERT INTO POST_INFO_TB"; 
@@ -416,7 +398,6 @@ public class PostDao {
 			pstmt.setString(2, postTitle + a);		
 			pstmt.setString(3, postContent + a);
 
-			System.out.println("값이 안들어갔니?");
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {

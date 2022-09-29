@@ -1,8 +1,10 @@
 @charset "UTF-8";
+
 	#addForm{
 		width: 1050px;
 		height: 550px;
-		background-color: #A9F5F2;		
+		background-color: #A9F5F2;	
+		margin: auto;
 	}
 	
 	#table1{

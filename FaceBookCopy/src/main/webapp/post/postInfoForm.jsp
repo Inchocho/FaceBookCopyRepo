@@ -32,7 +32,7 @@
 	<div id='test1'>
 		<div id='tableContainer'>
 			<div id='writeTitle'>
-				글쓰기
+				${postDto.postNum}번 게시글
 			</div>					
 			<table id='table1'>			
 					<tr>
@@ -42,10 +42,10 @@
 					</tr>
 					<tr>
 						<td class='firstC'>
-							이름
+							닉네임
 						</td>
 						<td class='valueC'>
-							<input id='userNick' type='text' value='${sessionScope.user.userNickName}' name='userNickName' readOnly>
+							<input id='userNick' type='text' value='${userDto.userName}' name='userNickName' readOnly>
 						</td>
 						<td></td>
 					</tr>
@@ -91,15 +91,20 @@
 							<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
 						</td>
 					</tr>
+					<tr>
+						<c:if test = '${sessionScope.user.userNo eq postDto.postNo}'>						
+						<td colspan=3 id='submitBtn'>
+							<input type='submit' id='submit' value='수정하기' onclick='pageMoveUpdateFnc()'>
+							<input type='submit' id='deleteSubmit' value='삭제하기' onclick='pageMoveDeleteFnc()'>
+						</td>						
+						</c:if>						
+					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>		
-	<c:if test = '${sessionScope.user.userNo eq postDto.postNo}'>
-		<input type='submit' id='submit' value='수정하기' onclick='pageMoveUpdateFnc()'>
-		<input type='submit' id='deleteSubmit' value='삭제하기' onclick='pageMoveDeleteFnc()'>
-	</c:if>
-	
+
 	<jsp:include page="../footer.jsp"/>	
+	
 </body>
 </html>
