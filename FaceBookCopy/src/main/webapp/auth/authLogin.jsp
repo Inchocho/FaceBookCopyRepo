@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +18,7 @@ body {
 	background: #f0f2f5;
 	min-width: 500px;
 	height: 500px;
+	
 }
 
 #leftDiv {
@@ -59,6 +59,7 @@ body {
 #mainDivBox{
  
   width: 1000px;
+  margin: auto;
  
 }
 
@@ -101,7 +102,7 @@ body {
 	font-weight: 500;
 }
 
-#singUp {
+#signUp {
 	border: none;
 	border-radius: 6px;
 	font-size: 17px;
@@ -133,6 +134,9 @@ body {
 	<div id="loginBox">
 		<div id="loginMainBox">
 			<!-- 로그인 모델 박스 시작 -->
+			<div id="hideDiv" style="display: none; z-index: 30;">
+			<jsp:include page="../user/userAddForm.jsp"></jsp:include>
+			</div>
 
 			<form action="<%=request.getContextPath()%>/auth/login" method="post">
 				<div id="formTop">
@@ -144,8 +148,9 @@ body {
 				</div>
 				<div>
 					<!-- 비번찾기시작 -->
-					<a id="paswwordFind" href="./find">비밀번호를 잊으셨나요?</a>
+					<a id="paswwordFind" href="./auth/find">비밀번호를 잊으셨나요?</a>
 				</div>
+			
 				<!-- 비번찾기 끝-->
 				<div id="lineClor">
 					<!-- 줄 -->
@@ -154,7 +159,7 @@ body {
 				<!-- 줄 -->
 
 				<!--회원가입 연결 div 시작-->
-				<button id="singUp">새계정 만들기</button>
+				<button id="signUp">새계정 만들기</button>
 
 
 				<!--회원가입 연결 div 끝 -->
@@ -176,6 +181,7 @@ body {
 
 	<div id="mainDiv" class="mainDiv">
 		<!-- 메인div시작 -->
+	
 		<div id="lefrDiv">
 			<div id="imgDiv">
 				<!-- 이미지 div시작 -->
@@ -196,21 +202,6 @@ body {
 </div>
 	<jsp:include page="../footer.jsp" />
 	<!-- 여기까지 묶어서 opca -->
-	<div id="hideDiv" style="display: none; z-index: 1;">
-		<jsp:include page="../user/userAddForm.jsp"></jsp:include>
-
-	</div>
 </body>
 
-<script type="text/javascript">
-	var singUpObj = document.getElementById("singUp")
-	var hideDivObj = document.getElementById("hideDiv");
-	var mainDivObj = document.getElementsByClassName("mainDiv");
-	singUpObj.addEventListener('click', function(e) {
-
-		hideDivObj.style.opacity = '1;';
-		hideDivObj.style.display = 'block';
-		mainDivObj[1].style.opacity = '0.5';
-	});
-</script>
 </html>

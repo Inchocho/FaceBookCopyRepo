@@ -3,6 +3,7 @@
 
 <script type="text/javascript">
 function clBtnFnc() {
+	var hideDivObj = document.getElementById("hideDiv");
 	hideDivObj.style.display = 'none';
 };
 </script>

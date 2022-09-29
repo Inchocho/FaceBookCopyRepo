@@ -51,7 +51,6 @@ li {
 			<li><a href="#">Português (Brasil)</a></li>
 			<li><a href="#">Français (France)</a></li>
 			<li><a href="#">Deutsch</a></li>
-			<li><a href="#"><img src="../img/+.PNG" alt=""></a></li>
 			<li><hr></li>
 			<li><a href="#">가입하기</a></li>
 			<li><a href="#">로그인</a></li>

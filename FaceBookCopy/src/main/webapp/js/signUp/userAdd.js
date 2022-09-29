@@ -154,5 +154,12 @@ agreeBtn.addEventListener('click', function(e) {
 	}
 });
 
+var signUpObj = document.getElementById("signUp");
+signUpObj.addEventListener('click', function (e) {
+	e.preventDefault();
+	var hideDivObj = document.getElementById("hideDiv");
+	hideDivObj.style.display = 'block';
+});
+	
 }
 
