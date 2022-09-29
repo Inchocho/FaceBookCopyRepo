@@ -6,12 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/userAddForm.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/userAddForm.css">
 <title>회원가입</title>
 
 <style type="text/css">
 </style>
-<script type="text/javascript" src="../js/signUp/userAdd.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/signUp/userAdd.js"></script>
 </head>
 <!--  -->
 <body>

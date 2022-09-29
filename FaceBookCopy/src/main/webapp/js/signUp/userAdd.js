@@ -154,9 +154,5 @@ agreeBtn.addEventListener('click', function(e) {
 	}
 });
 
-
-function clBtnFnc() {
-	hideDivObj.style.display = none;
-};
 }
 
