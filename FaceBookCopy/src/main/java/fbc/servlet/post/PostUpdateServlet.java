@@ -91,9 +91,33 @@ public class PostUpdateServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			
 			postDao.setConnection(conn);
-			postDao.updatePost(postNo, postTitle, postContent, postNum);
+			//해당 userNo의 비밀번호가 들어오는 변수(무조건 맞는 비밀번호가 들어옴)
+			String passwordChk = "";
 			
-			resp.sendRedirect("./list?page=" + page);
+			String password = req.getParameter("userPassword");
+			
+			passwordChk = postDao.matchingPassword(postNo);
+			
+			if(passwordChk.equals(password)) {
+				postDao.updatePost(postNo, postTitle, postContent, postNum);
+				resp.sendRedirect("./list?page=" + page);		
+			}else {
+				// 내 비밀번호와 내가 수정할때 입력한 비밀번호가 다른경우 
+				// 이전 작성내용을 갖고있는채로 다시 입력페이지로 이동함
+				req.setAttribute("wrongPassword", password);
+				PostDto postDto = new PostDto();
+				
+				postDto.setPostTitle(postTitle);
+				postDto.setPostContent(postContent);
+				
+				req.setAttribute("postDto", postDto);
+				
+				 rd
+					= req.getRequestDispatcher("./postUpdateForm.jsp");
+				
+				rd.forward(req, resp);
+			}
+			
 			
 		} catch (Exception e) {
 			//printStackTrace() 개발자를 위한 오류 - 콘솔창에 오류가뜸

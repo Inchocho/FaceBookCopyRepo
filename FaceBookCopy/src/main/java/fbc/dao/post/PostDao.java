@@ -435,7 +435,7 @@ public class PostDao {
 	}
 	
 	//게시판 글 작성,수정시 패스워드가 내가 입력한 패스워드와 일치하는지 확인하는 로직
-	public String matchingPassword(String userPassword) throws Exception{
+	public String matchingPassword(int postNo) throws Exception{
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String result = "";
@@ -443,21 +443,23 @@ public class PostDao {
 		try {
 			String sql = "";
 			sql += "SELECT USER_PASSWORD, USER_NO, USER_NAME FROM USER_INFO_TB";
-			sql += " WHERE USER_PASSWORD = ?";
+			sql += " WHERE USER_NO = ?";
 					
 			pstmt = connection.prepareStatement(sql);
-			pstmt.setString(1, userPassword);
+			pstmt.setInt(1, postNo);
 			
 			rs = pstmt.executeQuery();
 			
 			String password = "";
 			
+			//USER_NO를 통해서 해당하는 비밀번호를 찾아서 비밀번호가 맞으면 1건조회
+			//조회된 결과를 password변수에 담아서 result에 담아서 반납
 			if(rs.next()) {
 				password = rs.getString("USER_PASSWORD");
 				result = password;
 				return result;
 			}else {
-				result = userPassword + "꽝";
+				//건수 조회안됬으면? 내가 입력했던 userPassword를 result에 대입하여 반납				
 				return result;
 			}
 		}catch(Exception e) {

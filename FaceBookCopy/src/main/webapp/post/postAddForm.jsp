@@ -94,8 +94,9 @@
 
 </head>
 <body>
-	틀린비밀번호: ${wrongPassword} <br>
-	비밀번호: ${sessionScope.user.userPassword}
+	<c:if test='${sessionScope.user.userNickName eq "관리자"}'>
+		틀린 비밀번호: <input type='text' value='${wrongPassword}'>
+	</c:if>
 	<jsp:include page="../header.jsp"/>	
 	<form id='addForm' action="./add?page=${page}" method="post">		
 	<div id='test1'>

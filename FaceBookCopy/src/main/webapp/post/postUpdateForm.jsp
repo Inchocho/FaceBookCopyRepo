@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -132,7 +133,7 @@
 							비밀번호
 						</td>
 						<td class='valueC'>
-							<input id='password' type='password' value='${sessionScope.user.userPassword}' name=' userPassword' readOnly>
+							<input id='password' type='password' value='' name='userPassword'>
 						</td>
 						<td>
 						</td>
@@ -152,9 +153,14 @@
 	<input type='text' value='${sessionScope.user.userNo}' name='postNo' readOnly hidden="true">
 	</form>		
 	
-	유저 번호: ${sessionScope.user.userNo}
-	유저 이름: ${sessionScope.user.userName}
-	유저 비밀번호: ${sessionScope.user.userPassword}
+	<c:if test='${sessionScope.user.userNickName eq "관리자"}'>
+		틀린 비밀번호: <input type='text' value='${wrongPassword}'>
+		유저 번호: ${sessionScope.user.userNo}
+		유저 이름: ${sessionScope.user.userName}
+		유저 닉네임: ${sessionScope.user.userNickName}
+		유저 비밀번호: ${sessionScope.user.userPassword}
+	</c:if>
+
 	<jsp:include page="../footer.jsp"/>	
 </body>
 </html>

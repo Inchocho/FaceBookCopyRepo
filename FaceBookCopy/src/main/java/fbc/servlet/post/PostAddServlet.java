@@ -61,17 +61,19 @@ public class PostAddServlet extends HttpServlet{
 			PostDao postDao = new PostDao();
 			postDao.setConnection(conn);
 			
+			//해당 userNo의 비밀번호가 들어오는 변수(무조건 맞는 비밀번호가 들어옴)
 			String passwordChk = "";
 			
 			String password = req.getParameter("userPassword");
 			
-			passwordChk = postDao.matchingPassword(password);
+			passwordChk = postDao.matchingPassword(postNo);
 			
+			//내가 입력한값 = password가 해당 user의 비밀번호 passwordChk와 같으면 입력됨
 			if(passwordChk.equals(password)) {
 				postDao.insertPost(postDto);
 				resp.sendRedirect("./list?page=" + page);		
 			}else {
-				req.setAttribute("wrongPassword", passwordChk);
+				req.setAttribute("wrongPassword", password);
 				req.setAttribute("postDto", postDto);
 				
 				RequestDispatcher rd
