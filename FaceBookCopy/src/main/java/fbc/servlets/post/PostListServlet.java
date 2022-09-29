@@ -1,4 +1,4 @@
-package fbc.servlet.post;
+package fbc.servlets.post;
 
 import java.io.IOException;
 import java.sql.Connection;

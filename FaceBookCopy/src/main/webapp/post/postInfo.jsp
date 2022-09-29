@@ -21,7 +21,7 @@
 		var url = './delete?postNum=' + ${postDto.postNum} + '&page=' + ${page};
 		location.href = url;		
 	}		
-	
+
 </script>
 <style type="text/css">
 	#test1{
@@ -160,7 +160,7 @@
 	</div>		
 	<c:if test = '${sessionScope.user.userNo eq postDto.postNo}'>
 		<input type='submit' id='submit' value='수정하기' onclick='pageMoveUpdateFnc()'>
-		<input type='submit' id='submit' value='삭제하기' onclick='pageMoveDeleteFnc()'>
+		<input type='submit' id='deleteSubmit' value='삭제하기' onclick='pageMoveDeleteFnc()'>
 	</c:if>
 	
 	<jsp:include page="../footer.jsp"/>	
