@@ -32,7 +32,7 @@ label {
 	vertical-align: middle;
 }
 
-input, select, ._d4_fo_sp {
+input, select, ._d4_fo_sp, ._sp_ckbox {
 	background-color: #fff;
 	border: 1px solid #ccd0d5;
 	box-sizing: border-box;
@@ -139,7 +139,7 @@ input{
 	margin: -8px -6px -6px;
 	width: 400px;
 }
-#rad_1, #rad_2, #rad_3{
+#rad_1, #rad_2, #rad_3, #allCk, #Required{
 	display: inline-block;
 	background-color: initial;
     cursor: default;
@@ -153,7 +153,7 @@ input{
     right: 10px;
     top: 0;
 }
-#signUpBtn{
+.signUpBtn{
 	background: none;
     background-color: #00a400;
     border: none;
@@ -168,7 +168,7 @@ input{
     text-shadow: none;
 	cursor:pointer;
 }
-#signBtn_d{
+.signBtn_d{
 	text-align: center;
 }
 .inputText, #hidId{
@@ -206,4 +206,18 @@ input{
 #bir_year{
 	margin: 0px;
 }
-
+#checkbox_wrap{
+	display: flex;
+    flex-wrap: wrap;
+    margin: -8px -6px -6px;
+    width: 400px;
+}
+._sp_ckbox{
+	border: none;
+}
+._agree_sel_div{
+	border: 1px solid #90949c;
+    max-height: 120px;
+    overflow-y: scroll;
+    padding: 4px;	
+}

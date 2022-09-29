@@ -97,20 +97,56 @@
 						동의하게 됩니다. Facebook으로부터 SMS 알림을 받을 수 있으며 알림은 언제든지 옵트 아웃할 수 있습니다.
 					</p>
 				</div>
-				<div id="signBtn_d">
-					<button type="button" id="signUpBtn">가입하기</button>
+				<div class="signBtn_d">
+					<button type="button" id="signUpBtn" class="signUpBtn">가입하기</button>
 				</div>
 			</div>
-						<div class="_d4" id="_d4_ag">
+			  <div class="_d4" id="_d4_ag">
 				<div>
-					<input id="ck1" type="checkbox">항목1(필수)
-					<input id="ck2" type="checkbox">항목2(필수)
-					<input id="ck3" type="checkbox">항목3(선택)
-					<input id="allCk" type="checkbox">전체선택
-					<input id="Required" type="checkbox">필수선택
+				 <div class="_agree_sel_div">
+				 		Facebook의 이름이 Meta로 변경됩니다. 저희는 2022년 1월 4일에 새 이름을 반영하여 이용 약관, 데이터 정책 및 쿠키 정책을 개정했습니다. 이름이 바뀌더라도 Facebook 앱을 포함한 모든 동일한 제품이 Meta에서 지속적으로 제공됩니다. 기존의 데이터 정책 및 서비스 약관은 효력을 유지하며, 이번 이름 변경으로 인해 저희의 기존 데이터 사용 및 공유 방식이 변경되지는 않습니다. Meta와 Meta의 메타버스 비전을 자세히 알아보세요.
+						데이터 정책
+						이 정책에서는 Facebook, Instagram, Messenger 및 Meta Platforms, Inc.가 제공하는 기타 제품 및 기능을 지원하기 위해 저희가 처리하는 정보를 설명합니다. (Meta 제품 또는 제품). 추가적인 도구 및 정보는 Facebook 설정 및 Instagram 설정에서 확인할 수 있습니다.
+						I. 저희가 수집하는 정보의 유형
+						Meta 제품을 제공하기 위해 저희는 회원님에 대한 정보를 처리해야 합니다. 수집하는 정보의 유형은 회원님이 저희 제품을 이용하는 방법에 따라 다릅니다. Facebook 설정 및 Instagram 설정에 접속하여 저희가 수집한 정보에 액세스하고 이를 삭제하는 방법에 대해 알아보실 수 있습니다.
+						회원님 및 다른 사람의 활동 및 제공하는 정보.
+										 
+				 </div>
+				 <div>				 	
+					<input id="ck1" type="checkbox">
+					<label>동의항목 1 (필수)</label>
+				 </div>
+				 <div class="_agree_sel_div">
+				 	항목2 내용 ~~~~~~~~~~~~~<br>
+				 	<img alt="df" src="<%=request.getContextPath()%>/img/successSignUp.jpg" style="width: 130px; vertical-align: top;">
+				 </div>
+				 <div>
+					<input id="ck2" type="checkbox">
+					<label>동의항목 2 (필수)</label>
+				 </div>
+				 <div class="_agree_sel_div">
+				 	항목3 by조윤성<br>
+				 	<img alt="fa" src="<%=request.getContextPath()%>/img/successSignUp3.png" style="width: 130px">
+				 </div>
+				 <div>
+					<input id="ck3" type="checkbox">
+					<label>동의항목 3 (선택)</label>
+				 </div>
+				 <div style="text-align: right;">
+				 <span id="checkbox_wrap" data-type="checkbox">
+					<span class="_sp_ckbox">
+						<label class="labelgen" for="allCk">전체선택</label>
+						<input id="allCk" type="checkbox" >
+					</span>
+					<span class="_sp_ckbox">
+						<label class="labelgen" for="Required">필수선택</label>
+						<input id="Required" type="checkbox">
+					</span>
+				 </span>
+				 </div>
 				</div>
-				<div>
-					<button type="submit" id="agreeBtn">약관동의</button>
+				<div class="signBtn_d">
+					<button type="submit" id="agreeBtn" class="signUpBtn">가입하기</button>
 				</div>
 			</div>
 			</form>
