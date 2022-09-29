@@ -107,6 +107,7 @@ public class PostUpdateServlet extends HttpServlet{
 				req.setAttribute("wrongPassword", password);
 				PostDto postDto = new PostDto();
 				
+				postDto.setPostNum(postNum);
 				postDto.setPostTitle(postTitle);
 				postDto.setPostContent(postContent);
 				

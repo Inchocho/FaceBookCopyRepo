@@ -94,7 +94,7 @@
 	
 	<c:if test='${sessionScope.user.userNickName eq "관리자"}'>
 		<div style='margin:auto; width:1050px;'>
-		틀린 비밀번호: <input type='text' value='${wrongPassword}'>
+		틀린 비밀번호: <input type='text' value='${wrongPassword}' readonly>
 		유저 번호: ${sessionScope.user.userNo}
 		유저 이름: ${sessionScope.user.userName}
 		유저 닉네임: ${sessionScope.user.userNickName}
