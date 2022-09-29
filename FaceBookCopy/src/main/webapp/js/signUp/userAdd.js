@@ -154,10 +154,9 @@ agreeBtn.addEventListener('click', function(e) {
 	}
 });
 
-var xBtn = document.getElementById("closeBtnX")
-xBtn.addEventListener('click', function() {
-	var signUpDiv_Login = document.getElementById("hideDiv");
-	signUpDiv_Login.style.display = none;
-});
+
+function clBtnFnc() {
+	hideDivObj.style.display = none;
+};
 }
 
