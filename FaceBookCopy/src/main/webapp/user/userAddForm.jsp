@@ -61,19 +61,18 @@
 					<div class="placeholder" hidden="true">새 비밀번호</div>
 					<input type="password" name="pwd" class="inputText">
 				</div>
-				<div>
+				<div id="birth_wrap_d">
 					<div>생일</div>
 					<div>
-						<span data-type="selectors"> <span> <select
-								aria-label="연도" title="연도" name="birth_Y" id="bir_year"
-								class="selectors">
-									<!-- 										<option value="2022~1900"> -->
-							</select> <select aria-label="월" title="월" name="birth_M" id="bir_month"
-								class="selectors">
-							</select> <select aria-label="일" title="일" name="birth_D" id="bir_day"
-								class="selectors">
-							</select>
-						</span>
+						<span data-type="selectors" id="birth_wrap">
+						 <span>
+						 	<select aria-label="연도" title="연도" name="birth_Y" id="bir_year"
+								class="selectors"></select>
+							<select aria-label="월" title="월" name="birth_M" id="bir_month"
+								class="selectors"></select>
+							<select aria-label="일" title="일" name="birth_D" id="bir_day"
+								class="selectors"></select>
+						 </span>
 						</span>
 					</div>
 				</div>

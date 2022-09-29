@@ -133,7 +133,7 @@ input{
 	display: flex;
 	flex-wrap: wrap;
 	margin: -8px -6px -6px;
-	width: 411px;
+	width: 400px;
 }
 #rad_1, #rad_2, #rad_3{
 	display: inline-block;
@@ -171,6 +171,7 @@ input{
 	background-color: #f5f6f7;
 	border-color: #ccd0d5;
     width: 375px;
+    border-radius: 5px;
 }
 ._d_fullname{
 	width: 400px;
@@ -191,3 +192,14 @@ input{
 	padding: 11px;
 	margin: 0;
 }
+.selectors, ._d4_fo_sp{
+	border-radius: 4px;
+}
+.selectors{
+	width: 119px;
+	margin: 0px 0px 0px 11px;
+}
+#bir_year{
+	margin: 0px;
+}
+
