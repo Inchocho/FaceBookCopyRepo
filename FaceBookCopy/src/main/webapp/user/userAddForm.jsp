@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@page import="fbc.dao.user.UserDao" %> --%>
-<%-- <%@page import="fbc.dto.user.UserDto" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,19 +17,8 @@
 <div class="_d2">
 	<div class="_d3" id="_d3">
 		<jsp:include page="/signUpHeader.jsp"></jsp:include>
-			<form action="add" method="post">
-			<div class="_d4" id="_d4_ag">
-				<div>
-					<input id="ck1" type="checkbox">항목1(필수)
-					<input id="ck2" type="checkbox">항목2(필수)
-					<input id="ck3" type="checkbox">항목3(선택)
-					<input id="allCk" type="checkbox">전체선택
-					<input id="Required" type="checkbox">필수선택
-				</div>
-				<div>
-					<button type="submit" id="agreeBtn">약관동의</button>
-				</div>
-			</div>
+			<form action="user/add" method="post">
+
 			<div class="_d4" id="_d4_2">
 				<div class="_d_fullname">
 					<div id="lastname_d">
@@ -90,7 +77,6 @@
 						</span>
 					</span>
 				</div>
-				<!-- 이구역은 ._58mv css만 건드리기 -->
 				<div class="_58mu" data-nocookies="1">
 					<p class="_58mv">
 						저희 서비스를 이용하는 사람이 회원님의 연락처 정보를 Facebook에 업로드했을 수도 있습니다. <a
@@ -111,9 +97,20 @@
 						동의하게 됩니다. Facebook으로부터 SMS 알림을 받을 수 있으며 알림은 언제든지 옵트 아웃할 수 있습니다.
 					</p>
 				</div>
-				<!-- 여까지 -->
 				<div id="signBtn_d">
 					<button type="button" id="signUpBtn">가입하기</button>
+				</div>
+			</div>
+						<div class="_d4" id="_d4_ag">
+				<div>
+					<input id="ck1" type="checkbox">항목1(필수)
+					<input id="ck2" type="checkbox">항목2(필수)
+					<input id="ck3" type="checkbox">항목3(선택)
+					<input id="allCk" type="checkbox">전체선택
+					<input id="Required" type="checkbox">필수선택
+				</div>
+				<div>
+					<button type="submit" id="agreeBtn">약관동의</button>
 				</div>
 			</div>
 			</form>

@@ -22,10 +22,10 @@
 			<img alt="축하이미지" src="../img/successSignUp.jpg" align="middle"
 				width="300px">
 			<div>
-				<input type="button" value="홈으로"
+				<input type="button" value="홈으로" style="color:#0040FF; background-color:white; text-align:center; border:2px solid #0040FF;"
 					onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
-				<input type="button" value="로그인"
-					onclick="location.href='<%=request.getContextPath()%>'">
+				<input type="button" value="로그인" style="color:#0040FF; background-color:white; text-align:center; border:2px solid #0040FF;" 
+				onclick="location.href='<%=request.getContextPath()%>'">
 			</div>
 		</div>
 	</div>

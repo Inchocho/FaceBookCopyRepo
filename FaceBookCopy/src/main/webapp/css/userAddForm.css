@@ -74,6 +74,7 @@ input{
 	padding: 10px 16px;
 	position: relative;
 	width:455px;
+	height: 620px;
 	z-index: 1;
 	overflow: visible;
 }

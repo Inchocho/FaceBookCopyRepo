@@ -64,13 +64,10 @@ public class userAddServlet extends HttpServlet {
 	        String genderCheck = req.getParameter("sex");
 	        System.out.println(genderCheck + "확인");
 	        if(genderCheck.equals("0")) {
-	        	System.out.println("나 0번");
 	        	gender = "여성";
 	        }else if(genderCheck.equals("1")) {
-	        	System.out.println("나 1번");
 	        	gender = "남성";
 	        }else {
-	        	System.out.println("나는 나머지");
 	        	gender = "개인지정";
 //	        	gender = req.getParameter("otherSex");
 	        }
@@ -82,7 +79,8 @@ public class userAddServlet extends HttpServlet {
 			userDao.setConnection(conn);
 			
 			if(userDao.selectOne(userid) != null) {//id 유효성검사
-				res.sendRedirect("../패스워드찾기페이지");
+				res.sendRedirect("../auth/find");
+				System.out.println("중복아이디");
 			}else {
 				userDto
 				= new UserDto(username, userid, pwd, dateStr, gender);
@@ -91,6 +89,7 @@ public class userAddServlet extends HttpServlet {
 					System.out.println("회원가입 실패");
 					res.sendRedirect("../ErrorPage.jsp");
 				}else {
+					System.out.println("가입성공");
 					res.sendRedirect("../auth/authSignUpSuccess.jsp");				
 				}
 			}
