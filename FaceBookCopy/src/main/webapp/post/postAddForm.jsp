@@ -6,91 +6,13 @@
 <head>
 <meta charset="UTF-8">
 	<title>게시글 작성</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/postAddForm.css">
 <script type="text/javascript">
 	function pageMoveListFnc(){
 		var url = './list?page=' + ${page};
 		location.href = url;				
 	}
-	
-	window.onload = function(){
-		addSubmitBtnObj = document.getElementById('addSubmitBtn');
-	}
-	
-	function addSubmitChk(e){
-		
-		if(${sessionScope.user.userPassword} != ${wrongPassword}){
-			e.preventDefault();
-			alert('비밀번호가 틀립니다');
-			addSubmitBtnObj.value.focus();
-		}
-		
-	}
-	
-	addSubmitBtnObj.addEventListener('click',addSubmitChk);
-	
 </script>
-<style type="text/css">
-	#addForm{
-		width: 1050px;
-		height: 550px;
-		background-color: #A9F5F2;		
-	}
-	
-	#table1{
-		background-color: #A9F5F2;
-		width: 800px;
-		height: 90%;	
-		margin-left: 10%;
-		border: solid black 1px;
-		border-collapse: collapse;
-	}
-	
-	.valueC{
-		border: solid black 1px;
-		border-collapse: collapse;
-	}
-
-	.firstC{
-		color: black;
-		background-color: #04B4AE;
-		width: 20%;
-		text-align: center;
-		border: solid black 1px;
-		border-collapse: collapse;		
-	}
-	
-	#listAnc{
-		float: right;
-	}
-	
-	#userNick{
-		width: 20%;
-	}
-	
-	#title, #email{
-		width: 80%;
-	}
-	
-	#password{
-		width: 15%;
-	}
-	
-	
-	#btnTd{
-		text-align: center;
-	}
-	
-	#tableContainer{
-		padding-top: 25px;
-	}
-	
-	#writeTitle{
-		padding-left: 45%;
-		font-size: 20px;
-		font-weight: bold;		
-	}
-	
-</style>
 
 </head>
 <body>

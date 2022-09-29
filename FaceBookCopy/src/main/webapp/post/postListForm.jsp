@@ -5,26 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<style type="text/css">
-table{
-	border: 1px black solid;
-	border-collapse:collapse;
-}
-
-
-body { 
-  font-size: 140%; 
-}
-
-h2 {
-  text-align: center;
-  padding: 20px 0;
-}
-
-
-</style>
-
+<title>${sessionScope.user.userNickName}님 환영합니다 게시판 목록</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/postListForm.css">
 <script type="text/javascript">	
 	function pageMoveAddFnc(){
 		var url = './add?page=' + ${page};		
@@ -36,27 +18,27 @@ h2 {
 </head>
 <body>
 <jsp:include page="../header.jsp"/>
-<div class="container" style="width:1050px; height:550px; margin-top:100px">
-	<div style="width:100%">
+<div id="containerDiv">
+	<div id='listDiv'>
 	전체게시글 : ${totalPost}	
-		<a style="float:right;" href='../user/add'>회원가입</a>
-		<span style="float:right;">||</span>
+		<a class='rightFloat' href='../user/add'>회원가입</a>
+		<span class='rightFloat'>||</span>
 		<c:choose> 
 			<c:when test='${sessionScope.user.userNo eq null}'>
-				<a style="float:right;" href='../'>로그인</a>
+				<a class='rightFloat' href='../'>로그인</a>
 			</c:when>
 			<c:when test='${sessionScope.user.userNo ne null}'>
-				<a style="float:right;" href='../'>로그아웃</a>
+				<a class='rightFloat' href='../'>로그아웃</a>
 			</c:when>
 		</c:choose>
-      <table style="width:100%">        
-        <thead style="background-color:skyblue; text-align:left;">
+      <table id='listTab' style="width:100%">        
+        <thead>
           <tr>
-            <th style="width:10%">번호</th>
-            <th style="width:30%">제목</th>
-            <th style="width:20%">글쓴이</th>
-            <th style="width:20%">작성일</th>
-            <th style="width:10%">조회</th>
+            <th id='th1' style="width:10%">번호</th>
+            <th id='th2' style="width:30%">제목</th>
+            <th id='th3' style="width:20%">글쓴이</th>
+            <th id='th4' style="width:20%">작성일</th>
+            <th id='th5' style="width:10%">조회</th>
           </tr>
         </thead>
         <tbody>
@@ -74,8 +56,8 @@ h2 {
 			</tr>	
         </tbody>        
       </table>
-      <input type='button' value='글쓰기' onclick='pageMoveAddFnc()' style="float:right;">
-	      <div style="text-align: center;">
+      <input id='writeBtn' type='button' value='글쓰기' onclick='pageMoveAddFnc()'>
+	      <div id='pageDiv'>
 		    	<c:if test="${page > 1}">
 					<input type="button" value="<이전" 
 						onclick="location.href='./list?page=${page-1}'">
@@ -83,9 +65,9 @@ h2 {
 				
 				<c:forEach begin="1" end="${postList.size()/10+0.9}" var="i">
 					<c:if test="${page eq i}">
-						<input type="button" value="${i}"
+						<input id='cBtn' type="button" value="${i}"
 							onclick="location.href='./list?page=${i}'"
-							style="color: red;">
+							>
 					</c:if>
 					<c:if test="${page ne i}">
 						<input type="button" value="${i}"

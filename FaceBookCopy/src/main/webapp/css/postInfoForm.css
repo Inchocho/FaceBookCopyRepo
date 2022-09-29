@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+	#test1{
+		width: 1050px;
+		height: 550px;
+		background-color: #A9F5F2;		
+	}
+	
+	#table1{
+		background-color: #A9F5F2;
+		width: 800px;
+		height: 90%;	
+		margin-left: 10%;
+		border: solid black 1px;
+		border-collapse: collapse;
+	}
+	
+	.valueC{
+		border: solid black 1px;
+		border-collapse: collapse;
+	}
+
+	.firstC{
+		color: black;
+		background-color: #04B4AE;
+		width: 20%;
+		text-align: center;
+		border: solid black 1px;
+		border-collapse: collapse;		
+	}
+	
+	#listAnc{
+		float: right;
+	}
+	
+	#userNick{
+		width: 20%;
+	}
+	
+	#title, #email{
+		width: 80%;
+	}
+	
+	#password{
+		width: 15%;
+	}
+	
+	
+	#btnTd{
+		text-align: center;
+	}
+	
+	#tableContainer{
+		padding-top: 25px;
+	}
+	
+	#writeTitle{
+		padding-left: 45%;
+		font-size: 20px;
+		font-weight: bold;		
+	}

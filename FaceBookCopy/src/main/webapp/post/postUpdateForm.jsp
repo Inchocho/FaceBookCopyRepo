@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${postDto.postNo}번 게시글 수정중</title>
+<title>${postDto.postNum}번 게시글 수정중</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/postUpdateForm.css">
 <script type="text/javascript">
 	function pageMoveListFnc(){
 		var url = './list?page=' + ${page};
@@ -13,68 +14,6 @@
 	}
 	
 </script>
-<style type="text/css">
-	#updateForm{
-		width: 1050px;
-		height: 550px;
-		background-color: #A9F5F2;		
-	}
-	
-	#table1{
-		background-color: #A9F5F2;
-		width: 800px;
-		height: 90%;	
-		margin-left: 10%;
-		border: solid black 1px;
-		border-collapse: collapse;
-	}
-	
-	.valueC{
-		border: solid black 1px;
-		border-collapse: collapse;
-	}
-
-	.firstC{
-		color: black;
-		background-color: #04B4AE;
-		width: 20%;
-		text-align: center;
-		border: solid black 1px;
-		border-collapse: collapse;		
-	}
-	
-	#listAnc{
-		float: right;
-	}
-	
-	#userNick{
-		width: 20%;
-	}
-	
-	#title, #email{
-		width: 80%;
-	}
-	
-	#password{
-		width: 15%;
-	}
-	
-	
-	#btnTd{
-		text-align: center;
-	}
-	
-	#tableContainer{
-		padding-top: 25px;
-	}
-	
-	#writeTitle{
-		padding-left: 45%;
-		font-size: 20px;
-		font-weight: bold;		
-	}
-	
-</style>
 </head>
 <body>
 	<jsp:include page="../header.jsp"/>

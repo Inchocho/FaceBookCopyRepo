@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${postDto.postNo}번 게시글 상세정보</title>
+<title>${postDto.postNum}번 게시글 상세정보</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/postInfoForm.css">
 <script type="text/javascript">
 	function pageMoveListFnc(){
 		var url = './list?page=' + ${page};
@@ -23,69 +24,7 @@
 	}		
 
 </script>
-<style type="text/css">
-	#test1{
-		width: 1050px;
-		height: 550px;
-		background-color: #A9F5F2;		
-	}
-	
-	#table1{
-		background-color: #A9F5F2;
-		width: 800px;
-		height: 90%;	
-		margin-left: 10%;
-		border: solid black 1px;
-		border-collapse: collapse;
-	}
-	
-	.valueC{
-		border: solid black 1px;
-		border-collapse: collapse;
-	}
 
-	.firstC{
-		color: black;
-		background-color: #04B4AE;
-		width: 20%;
-		text-align: center;
-		border: solid black 1px;
-		border-collapse: collapse;		
-	}
-	
-	#listAnc{
-		float: right;
-	}
-	
-	#userNick{
-		width: 20%;
-	}
-	
-	#title, #email{
-		width: 80%;
-	}
-	
-	#password{
-		width: 15%;
-	}
-	
-	
-	#btnTd{
-		text-align: center;
-	}
-	
-	#tableContainer{
-		padding-top: 25px;
-	}
-	
-	#writeTitle{
-		padding-left: 45%;
-		font-size: 20px;
-		font-weight: bold;		
-	}
-	
-	
-</style>
 
 </head>
 <body>	
@@ -115,7 +54,7 @@
 							제목
 						</td>
 						<td class='valueC'>
-							<input type='text' value='${postDto.postTitle}' name='postTitle' readonly>
+							<input id='title' type='text' value='${postDto.postTitle}' name='postTitle' readonly>
 						</td>
 						<td></td>
 					</tr>
@@ -149,8 +88,6 @@
 					</tr>
 					<tr>
 						<td id='btnTd' colspan='3' class='firstC'>
-							<input type='submit' value='글쓰기'>
-							<input type='reset' value='다시작성'>
 							<input type='button' value='목록보기' onclick='pageMoveListFnc()'>
 						</td>
 					</tr>
