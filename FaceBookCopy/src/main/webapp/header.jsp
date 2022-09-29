@@ -15,7 +15,7 @@
 	margin-top: 10px;">
 	<div style="height:60px">
 		<h1 style='color:#0040FF; background-color:white; text-align:center; height:100%; border:2px solid #0040FF'>FaceBookCopy Project Team 
-		<span style="float:right"><a href="<%=request.getContextPath()%>/auth/logout"><img alt="로그아웃" src="<%=request.getContextPath()%>/img/headerImg3.png" width="40px" height="100%"></a></span></h1>
+		<span style="float:right"><a href="<%=request.getContextPath()%>/auth/authLogoutCheck.jsp"><img alt="로그아웃" src="<%=request.getContextPath()%>/img/headerImg3.png" width="40px" height="100%"></a></span></h1>
 	</div>
 	<div style='width:100%;'>
 	<h2 style='color:white; background-color:white; text-align:center;'>

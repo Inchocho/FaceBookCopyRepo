@@ -28,7 +28,7 @@
 				<a class='rightFloat' href='../'>로그인</a>
 			</c:when>
 			<c:when test='${sessionScope.user.userNo ne null}'>
-				<a class='rightFloat' href='../'>로그아웃</a>
+				<a class='rightFloat' href='<%=request.getContextPath()%>/auth/authLogoutCheck.jsp'>로그아웃</a>
 			</c:when>
 		</c:choose>
       <table id='listTab' style="width:100%">        

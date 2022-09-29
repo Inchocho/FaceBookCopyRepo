@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -133,7 +134,7 @@ body {
 		<div id="loginMainBox">
 			<!-- 로그인 모델 박스 시작 -->
 
-			<form action="./login" method="post">
+			<form action="<%=request.getContextPath()%>/auth/login" method="post">
 				<div id="formTop">
 					<input id="loginEmail" type="text" name="email"
 						placeholder="이메일 또는 전화번호" onblur="this.placeholder='이메일 또는 전화번호'"><br>
@@ -143,7 +144,7 @@ body {
 				</div>
 				<div>
 					<!-- 비번찾기시작 -->
-					<a id="paswwordFind" href="./auth/find">비밀번호를 잊으셨나요?</a>
+					<a id="paswwordFind" href="./find">비밀번호를 잊으셨나요?</a>
 				</div>
 				<!-- 비번찾기 끝-->
 				<div id="lineClor">
