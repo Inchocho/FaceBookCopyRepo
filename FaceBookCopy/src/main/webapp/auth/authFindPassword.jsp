@@ -48,7 +48,7 @@ a {
 		<input type="text" name="email" placeholder="이메일 또는 휴대폰 번호"
 			autofocus="1" aria-label="이메일 또는 휴대폰 번호"> <input type="text"
 			name="password" placeholder="비밀번호" autofocus="1" aria-label="비밀번호">
-		<input type="submit" value="로그인"> <a href="../auth/find"
+		<input type="submit" value="로그인"> <a href="./auth/find"
 			target="blank">계정을 잊으셨나요?</a>
 	</form>
 

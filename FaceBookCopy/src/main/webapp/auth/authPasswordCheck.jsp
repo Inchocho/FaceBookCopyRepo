@@ -29,6 +29,9 @@ a {
 	white-space: nowrap;
 	color: white;
 }
+#hiddenId{
+visibility: hidden;
+}
 </style>
 <meta charset="EUC-KR">
 <title>비밀번호를 잊으셨나요? | 로그인할 수 없는 경우 |Facebook</title>
@@ -40,14 +43,15 @@ a {
 			autofocus="1" aria-label="이메일 또는 휴대폰 번호"> <input type="text"
 			name="password" placeholder="비밀번호" autofocus="1" aria-label="비밀번호">
 		<input type="submit" value="로그인"> <a
-			href="/FaceBookCopy/user/userFindPassword.jsp" target="blank">계정을
+			href="./auth/find" target="blank">계정을
 			잊으셨나요?</a>
 	</form>
 
 	<form action="/FaceBookCopy/auth/login" method="post">
-		<input type="text" value="${userDto.userPhoneOrEmail}" name="email">
-		<input type="text" value="${userDto.userPassword}" name="password">
+		<input  id="hiddenId" type="text" value="${userDto.userPhoneOrEmail}" name="email">
+		<p>비밀번호는 : <input type="text" value="${userDto.userPassword}" name="password"> 입니다
 		<input type="submit" value="로그인">
+		</p>
 	</form>
 	<jsp:include page="/footer.jsp" />
 </body>

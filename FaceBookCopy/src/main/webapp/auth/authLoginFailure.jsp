@@ -115,7 +115,7 @@ ul <li <a{
 
 
 			<div>
-				<a id="paswwordFind" href="#">비밀번호를 잊으셨나요?</a>
+				<a id="paswwordFind" href="./auth/find">비밀번호를 잊으셨나요?</a>
 			</div>
 
 			<form action="" method="get">

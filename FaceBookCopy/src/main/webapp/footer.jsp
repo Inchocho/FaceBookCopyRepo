@@ -2,17 +2,33 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <style>
+	 li{
+	list-style: none;
+	float: left;
+
+	}
+	
+	#horizontal{
+	width:200px; 
+	height: 150px;
+	}
+	
 	#footerUl <li <a{
 	 	color: #8a8d91;
 	 	font-size: 12px;
+	 	
 	}
 	
 	#underPart{
 	 background-color: #fff;
 	}
+	a{
+	color: #8a8d91;
+	cursor: pointer;
+	}
 </style>
 
-<div style="background-color: #FAFAFA; height: 300px; padding: 5px; width: 1050px;
+<div id="horizontal" style="background-color: #FAFAFA; height: 300px; padding: 5px; width: 1050px;
 	margin-top: 10px;">
 	<h1 style='color:white; background-color:#0040FF; text-align:center;'>FaceBookCopy Project Team </h1>
 	<div style='width:100%'>
@@ -33,6 +49,7 @@
 		<li><a href="#">Français (France)</a></li>
 		<li><a href="#">Deutsch</a></li>
 		<li><a href="#"><img src="../img/+.PNG" alt=""></a></li>
+		<li><hr></li>
 		<li><a href="#">가입하기</a></li>
 		<li><a href="#">로그인</a></li>
 		<li><a href="#">Messenger</a></li>
