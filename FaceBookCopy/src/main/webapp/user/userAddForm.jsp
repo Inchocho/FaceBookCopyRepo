@@ -11,8 +11,6 @@
 
 <style type="text/css">
 </style>
-
-
 <script type="text/javascript" src="../js/signUp/userAdd.js"></script>
 </head>
 <!--  -->
@@ -20,11 +18,7 @@
 <div class="_d1">
 <div class="_d2">
 	<div class="_d3" id="_d3">
-		
 		<jsp:include page="/signUpHeader.jsp"></jsp:include>
-		
-		
-			<!-- 				<div>오류거르는div</div> -->
 			<form action="add" method="post">
 			<div class="_d4" id="_d4_ag">
 				<div>

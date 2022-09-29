@@ -147,10 +147,17 @@ agreeckall.addEventListener("click", function(e) {
 
 agreeBtn.addEventListener('click', function(e) {
 	if (!agreeck1.checked || !agreeck2.checked) {
-		event.preventDefault();
+		e.preventDefault();
 		alert("필수항목을 선택해주세요");
 	} else {
 
 	}
 });
+
+var xBtn = document.getElementById("closeBtnX")
+xBtn.addEventListener('click', function() {
+	var signUpDiv_Login = document.getElementById("hideDiv");
+	signUpDiv_Login.style.display = none;
+});
 }
+

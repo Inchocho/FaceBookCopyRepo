@@ -17,13 +17,15 @@
 <body>	
 	<jsp:include page="../header.jsp"/>
 	<div class="container" style="width: 1050px; height: 550px">
-		<div id="topMenu">
+		<div id="topMenu"  style="text-align: center;">
 			<h1>가입 성공하셨습니다.</h1>
+			<img alt="축하이미지" src="../img/successSignUp.jpg" align="middle"
+				width="300px">
 			<div>
 				<input type="button" value="홈으로"
 					onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
 				<input type="button" value="로그인"
-					onclick="location.href='<%=request.getContextPath()%>/auth/login'">
+					onclick="location.href='<%=request.getContextPath()%>'">
 			</div>
 		</div>
 	</div>
