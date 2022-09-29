@@ -16,14 +16,6 @@
 </head>
 <body>	
 	<jsp:include page="../header.jsp"/>
-<div class="container" style="width:1050px; height:550px">
-	<div id="topMenu">
-		<h1>가입 성공하셨습니다.</h1>
-		<div>
-		<input type="button" value="홈으로" onclick="location.href='<%=request.getContextPath()%>/index.jsp'">
-		<input type="button" value="로그인" onclick="location.href='<%=request.getContextPath()%>'">
-<body>
-	<jsp:include page="../header.jsp" />
 	<div class="container" style="width: 1050px; height: 550px">
 		<div id="topMenu">
 			<h1>가입 성공하셨습니다.</h1>
