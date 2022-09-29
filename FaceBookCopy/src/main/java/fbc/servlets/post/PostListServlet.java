@@ -51,7 +51,7 @@ public class PostListServlet extends HttpServlet{
 			req.setAttribute("page", page);			
 			
 			RequestDispatcher rd
-				= req.getRequestDispatcher("./postList.jsp");
+				= req.getRequestDispatcher("./postListForm.jsp");
 			
 			rd.forward(req, resp);
 			

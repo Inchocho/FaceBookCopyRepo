@@ -53,7 +53,7 @@ public class PostInfoServlet extends HttpServlet{
 			req.setAttribute("page", page);
 			
 			RequestDispatcher rd
-				= req.getRequestDispatcher("./postInfo.jsp");
+				= req.getRequestDispatcher("./postInfoForm.jsp");
 			
 			rd.forward(req, res);
 			
