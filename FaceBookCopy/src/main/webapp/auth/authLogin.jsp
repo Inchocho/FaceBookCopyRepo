@@ -6,21 +6,117 @@
 <meta charset="UTF-8">
 <style type="text/css">
 body {
-	background-color: #f0f2f5;
-	overflow-y: scroll;
+	background: #fff;
+	color: #1c1e21;
+	direction: ltr;
 	line-height: 1.34;
-	font-size: 12px;
+	margin: 0;
+	padding: 0;
 }
 
-a {
-	text-decoration: none;
+#mainDiv {
+	background: #f0f2f5;
+	min-width: 500px;
+	height: 500px;
 }
 
-a:hover {
-	text-decoration: underline;
+#leftDiv {
+	margin: auto;
+	padding: 20px 0;
+	position: relative;
+	width: 980px;
+	height: 50px;
 }
 
+#imgDiv {
+	border: 0;
+}
 
+#letterH2 {
+	font-size: 28px;
+	font-weight: normal;
+	width: 500px;
+	padding: 0 0 20px;
+}
+
+#loginBox {
+	float: right;
+}
+
+#loginMainBox {
+	align-items: center;
+	background-color: #fff;
+	border: none;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgb(0 0 0/ 10%), 0 8px 16px rgb(0 0 0/ 10%);
+	box-sizing: border-box;
+	margin: 40px 0 0;
+	padding: 20px 0 28px;
+	width: 396px;
+	
+}
+#mainDivBox{
+ 
+  width: 1000px;
+ 
+}
+
+#loginEmail {
+	border-radius: 6px;
+	font-size: 17px;
+	padding: 14px 16px;
+	width: 330px;
+	margin-bottom: 8px;
+}
+
+#loginPassword {
+	border-radius: 6px;
+	font-size: 17px;
+	padding: 14px 16px;
+	width: 330px;
+	
+}
+
+#lineClor {
+	opacity: 0.7;
+}
+
+#loginOk {
+	background-color: #156cdc;
+	border-color: #156cdc;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	font-size: 20px;
+	line-height: 48px;
+	padding: 0 16px;
+	margin-top: 10px;
+	width: 332px;
+}
+
+#paswwordFind {
+	color: #1877f2;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+#singUp {
+	border: none;
+	border-radius: 6px;
+	font-size: 17px;
+	line-height: 48px;
+	padding: 0 16px;
+	background-color: #42b72a;
+	cursor: pointer;
+	color: white;
+}
+
+#newPage {
+	margin-top: 28px;
+	border-top: none;
+	color: #1c1e21;
+	font-weight: bold;
+}
 </style>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/userAddForm.css">
@@ -32,84 +128,41 @@ a:hover {
 </head>
 
 <body>
-
-	<div class="_li" id="u_0_1_5s">
-		<div id="glogalContainer" class="uiContextualLayerParnt">
-			<div class="fb_content clearFox" id="content" role="main">
-				<div>
-					<div class="_8esj _95k9 _8esf _8opv _8f3m _8ilg _8icx _8op_ _95ka">
-						<div class="_8esk">
-							<div class="_8ice">
-								<img class="fb_logo _8ilh img" src="/FaceBookCopy/img/Facebook1.PNG" alt="Facebook">
-							</div>
-							<h2 class="_8eso">Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.
-							</h2>
-						</div>
-						<div class="_8esn">
-						<div class="_8iep _8icy _9ahz _9ah-">
-						<div class="_6luv _52jv">
-							<form class="_9vtf" action="./login" method="post">
-								<div class="_61ux">
-								<input id="loginEmail" type="text" name="email"
-								placeholder="이메일 또는 전화번호" onblur="this.placeholder='이메일 또는 전화번호'">
-								</div>
-								<div class="_61ux">
-									<div class="">
-									<input id="loginPassword" type="password" name="password"
-									placeholder="비밀번호" onblur="this.placeholder='비밀번호'"><br>
-									<input id="loginOk" type="submit" value="로그인">
-									</div>
-								</div>
-							</form>
-						</div>
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	</div>
-	
-	
-	
-		<!-- 메인div시작 -->
-		<div id="lefrDiv">
-		<div id="imgDiv">
-			<!-- 이미지 div시작 -->
-			
-		</div>
-		<!-- 이미지 div끝-->
-
-		
-		</div>
+<div id="mainDivBox">
+	<div id="loginBox">
 		<div id="loginMainBox">
 			<!-- 로그인 모델 박스 시작 -->
 
-			
-				<br>
-
+			<form action="./login" method="post">
+				<div id="formTop">
+					<input id="loginEmail" type="text" name="email"
+						placeholder="이메일 또는 전화번호" onblur="this.placeholder='이메일 또는 전화번호'"><br>
+					<input id="loginPassword" type="password" name="password"
+						placeholder="비밀번호" onblur="this.placeholder='비밀번호'"><br>
+					<input id="loginOk" type="submit" value="로그인">
+				</div>
 				<div>
 					<!-- 비번찾기시작 -->
 					<a id="paswwordFind" href="./auth/find">비밀번호를 잊으셨나요?</a>
 				</div>
 				<!-- 비번찾기 끝-->
-				<div>
+				<div id="lineClor">
 					<!-- 줄 -->
 					<hr>
 				</div>
 				<!-- 줄 -->
 
 				<!--회원가입 연결 div 시작-->
-				
 				<button id="singUp">새계정 만들기</button>
 
 
 				<!--회원가입 연결 div 끝 -->
 
+				<!--newPage 생성 끝 -->
+
 			</form>
+
 		</div>
-		<!-- 로그인 모델 박스 끝 -->
 
 		<div>
 			<!--newPage 생성 시작 -->
@@ -118,17 +171,34 @@ a:hover {
 				유명인, 브랜드 또는 비즈니스를 위한<a id="newPage" href="#"> 페이지 만들기</a>.
 			</p>
 		</div>
-		<!--newPage 생성 끝 -->
+	</div>
+
+	<div id="mainDiv" class="mainDiv">
+		<!-- 메인div시작 -->
+		<div id="lefrDiv">
+			<div id="imgDiv">
+				<!-- 이미지 div시작 -->
+				<img src="/FaceBookCopy/img/Facebook1.PNG" alt="페이스북">
+			</div>
+			<!-- 이미지 div끝-->
+
+			<h2 id="letterH2">Facebook에서 전세계에 있는 친구, 가족, 지인들과 함께 이야기를 나눠보세요.</h2>
+		</div>
+
+		<!-- 로그인 모델 박스 끝 -->
+
+
 
 	</div>
 	<!-- 메인div끝 -->
-	<jsp:include page="../footer.jsp" />
 
-	<div id="hideDiv" style="display: none; position:absolute; top:100px ; z-index: 30; width: 100%; background-color: transparent;">
-		<div style="background-color: white;"></div>
+</div>
+	<jsp:include page="../footer.jsp" />
+	<!-- 여기까지 묶어서 opca -->
+	<div id="hideDiv" style="display: none; z-index: 1;">
 		<jsp:include page="../user/userAddForm.jsp"></jsp:include>
+
 	</div>
-	
 </body>
 
 <script type="text/javascript">
@@ -136,10 +206,10 @@ a:hover {
 	var hideDivObj = document.getElementById("hideDiv");
 	var mainDivObj = document.getElementsByClassName("mainDiv");
 	singUpObj.addEventListener('click', function(e) {
-		e.preventDefault();
+
 		hideDivObj.style.opacity = '1;';
-		hideDivObj.style.display = 'table';
-		mainDivObj[1].style.opacity = '0.5;';
+		hideDivObj.style.display = 'block';
+		mainDivObj[1].style.opacity = '0.5';
 	});
 </script>
 </html>

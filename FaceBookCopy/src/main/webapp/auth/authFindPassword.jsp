@@ -71,6 +71,7 @@ a {
 				type='submit' value='°Ë»ö'>
 		</form>
 	</div>
+		<jsp:include page="../footer.jsp" />
 
 </body>
 
