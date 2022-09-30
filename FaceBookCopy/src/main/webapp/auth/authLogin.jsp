@@ -54,7 +54,7 @@ body {
 	margin: 40px 0 0;
 	padding: 20px 0 28px;
 	width: 396px;
-	
+	text-align: center;
 }
 #mainDivBox{
  
