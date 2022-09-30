@@ -15,7 +15,7 @@
 </script>
 
 </head>
-<body>	
+<body style="text-align: center;">	
 	<jsp:include page="../header.jsp"/>
 	<div class="container" style="width: 1050px; height: 550px; display: inline-block;">
 		<div id="topMenu"  style="text-align: center;">
