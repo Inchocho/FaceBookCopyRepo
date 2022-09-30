@@ -130,13 +130,11 @@ body {
 </head>
 
 <body>
+	
 <div id="mainDivBox">
 	<div id="loginBox">
 		<div id="loginMainBox">
 			<!-- 로그인 모델 박스 시작 -->
-			<div id="hideDiv" style="display: none; z-index: 30;">
-			<jsp:include page="../user/userAddForm.jsp"></jsp:include>
-			</div>
 
 			<form action="<%=request.getContextPath()%>/auth/login" method="post">
 				<div id="formTop">
@@ -159,7 +157,6 @@ body {
 				<!-- 줄 -->
 
 				<!--회원가입 연결 div 시작-->
-				<button id="signUp">새계정 만들기</button>
 
 
 				<!--회원가입 연결 div 끝 -->
@@ -167,6 +164,7 @@ body {
 				<!--newPage 생성 끝 -->
 
 			</form>
+			<button id="signUp">새계정 만들기</button>
 
 		</div>
 
@@ -195,10 +193,12 @@ body {
 		<!-- 로그인 모델 박스 끝 -->
 
 
-
+	<div id="hideDiv" style="display: none; z-index: 30;">
+	<jsp:include page="../user/userAddForm.jsp"></jsp:include>
+	</div>
 	</div>
 	<!-- 메인div끝 -->
-
+	
 </div>
 	<jsp:include page="../footer.jsp" />
 	<!-- 여기까지 묶어서 opca -->
