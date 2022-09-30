@@ -13,6 +13,11 @@
 		location.href = url;		
 	}
 	
+	function pageMoveSampleAddFnc(){
+		var url = './add2?page=' + ${page};		
+		location.href = url;		
+	}	
+	
 </script>
 
 </head>
@@ -57,6 +62,7 @@
         </tbody>        
       </table>
       <input id='writeBtn' type='button' value='글쓰기' onclick='pageMoveAddFnc()'>
+      <input id='writeSampleBtn' type='button' value='샘플만들기' onclick='pageMoveSampleAddFnc()'>
 	      <div id='pageDiv'>
 		    	<c:if test="${page > 1}">
 					<input type="button" value="<이전" 
